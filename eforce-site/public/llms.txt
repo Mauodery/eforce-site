@@ -1,0 +1,30 @@
+# E-Force Drums
+
+> Electronic drum kits with acoustic soul — wood shell design, exclusive finishes, born from Odery Drums Brazil. Site defaults to Portuguese (pt); also available in English, Spanish, Italian, German and Chinese via the same paths under /en/, /es/, /it/, /de/, /zh/.
+
+## Brand
+
+E-Force is an electronic drum kit line created by Odery Drums Brazil, combining acoustic-shell craftsmanship with electronic modules (F10 and F50). Prices below are in Brazilian Reais (BRL).
+
+## Product line (kits)
+
+- [EF2 V1](https://eforcedrums.com/pt/kits/ef2-v1): Entry kit, F10 module, R$ 3.454 — "Seu ponto de partida."
+- [EF2 V2](https://eforcedrums.com/pt/kits/ef2-v2): F10 module, R$ 4.527 — "A primeira escolha do baterista."
+- [EF2 V3](https://eforcedrums.com/pt/kits/ef2-v3): F10 module, R$ 5.103 — "O próximo passo natural."
+- [EF2 V4](https://eforcedrums.com/pt/kits/ef2-v4): Intermediate premium, F10 module, R$ 7.770 — "Performance premium intermediária."
+- [EF5 V2](https://eforcedrums.com/pt/kits/ef5-v2): Professional kit, F50 module, R$ 13.713 — "O instrumento do profissional."
+- [EF7 Odery Eyedentity Hybrid](https://eforcedrums.com/pt/kits/ef7-eye-hybrid): Flagship, F50 module, R$ 23.527 — "O topo. A declaração."
+
+## Key pages
+
+- [Home](https://eforcedrums.com/pt): Brand overview and full kit showcase.
+- [Story](https://eforcedrums.com/pt/story): E-Force and Odery Drums Brazil brand history.
+- [Technology](https://eforcedrums.com/pt/technology): F10/F50 module technology and modules explained.
+- [Dealers](https://eforcedrums.com/pt/dealers): Authorized dealer/partner locator.
+- [Support](https://eforcedrums.com/pt/support): Manuals and product catalogs.
+- [News](https://eforcedrums.com/pt/news): Blog and announcements (also statically rendered per post).
+
+## Notes for automated agents
+
+- Product prices are BRL list prices shown on each product page; confirm current pricing on the live page before quoting.
+- Dealer/reseller availability varies by region — see the Dealers page for the current list.

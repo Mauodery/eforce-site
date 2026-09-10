@@ -7,11 +7,12 @@ interface SEOProps {
   image?: string;
   lang: string;
   path: string;
+  schema?: Record<string, unknown>;
 }
 
 const BASE_URL = 'https://eforcedrums.com';
 
-export default function SEO({ title, description, image, lang, path }: SEOProps) {
+export default function SEO({ title, description, image, lang, path, schema }: SEOProps) {
   const ogImage = image ?? '/assets/images/brand/eforce-og-image.webp';
   const canonicalUrl = `${BASE_URL}/${lang}${path}`;
 
@@ -51,6 +52,10 @@ export default function SEO({ title, description, image, lang, path }: SEOProps)
           href={`${BASE_URL}/${sl.code}${path}`}
         />
       ))}
+
+      {schema && (
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      )}
     </Helmet>
   );
 }

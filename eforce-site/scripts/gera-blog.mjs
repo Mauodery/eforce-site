@@ -29,16 +29,16 @@ for (const lang of LANGS) {
     const html = marked.parse(p.body);
     write(`${lang}/news/${p.slug}/index.html`,
       renderPost({ lang, slug: p.slug, data: p.data, html, related: p.data.relatedProducts ?? [] }));
-    sitemap.push(`https://www.eforcedrums.com/${lang}/news/${p.slug}/`);
+    sitemap.push(`https://eforcedrums.com/${lang}/news/${p.slug}/`);
     total++;
   }
   write(`${lang}/news/index.html`, renderIndex({ lang, posts }));
-  sitemap.push(`https://www.eforcedrums.com/${lang}/news/`);
+  sitemap.push(`https://eforcedrums.com/${lang}/news/`);
 
   const items = posts.map((p) =>
-    `<item><title>${esc(p.data.title)}</title><link>https://www.eforcedrums.com/${lang}/news/${p.slug}/</link><pubDate>${new Date(p.data.publishedAt).toUTCString()}</pubDate></item>`).join("");
+    `<item><title>${esc(p.data.title)}</title><link>https://eforcedrums.com/${lang}/news/${p.slug}/</link><pubDate>${new Date(p.data.publishedAt).toUTCString()}</pubDate></item>`).join("");
   write(`${lang}/news/feed.xml`,
-    `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>E-Force — ${lang === "pt" ? "Novidades" : "News"}</title><link>https://www.eforcedrums.com/${lang}/news/</link><description>Bateria eletrônica.</description>${items}</channel></rss>`);
+    `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>E-Force — ${lang === "pt" ? "Novidades" : "News"}</title><link>https://eforcedrums.com/${lang}/news/</link><description>Bateria eletrônica.</description>${items}</channel></rss>`);
 }
 write("sitemap-blog.xml",
   `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${sitemap.map((u) => `<url><loc>${u}</loc></url>`).join("")}</urlset>`);

@@ -928,11 +928,21 @@ export default function ProductDetailPage() {
     return <Navigate to={`/${lang}/line`} replace />;
   }
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: `https://eforcedrums.com${product.heroImage}`,
+    sku: product.id,
+    brand: { "@type": "Brand", name: "E-Force" },
+  };
+
   const COMING_SOON_IDS = ["ef7eye"];
   if (COMING_SOON_IDS.includes(product.id)) {
     return (
       <>
-        <SEO title={`${product.name} | E-Force`} description={product.description} lang={lang ?? "en"} path={`/kits/${product.slug}`} />
+        <SEO title={`${product.name} | E-Force`} description={product.description} lang={lang ?? "en"} path={`/kits/${product.slug}`} schema={productSchema} />
         <section style={{ background: "#0a0a0a", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "2rem" }}>
           <span style={{ fontSize: "11px", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.3em", color: "#ff4a1c" }}>{t('coming_soon')}</span>
           <h1 style={{ fontSize: "clamp(3rem, 8vw, 7rem)", fontWeight: 800, color: "#fff", lineHeight: 0.92, letterSpacing: "-0.04em", marginTop: "1rem", marginBottom: "1.5rem" }}>
@@ -957,6 +967,15 @@ export default function ProductDetailPage() {
         image={product.heroImage}
         lang={lang ?? "en"}
         path={`/kits/${product.slug}`}
+        schema={{
+          ...productSchema,
+          offers: {
+            "@type": "Offer",
+            url: `https://eforcedrums.com/${lang ?? "en"}/kits/${product.slug}`,
+            priceCurrency: "BRL",
+            price: product.priceValue,
+          },
+        }}
       />
 
       <div className="bg-white min-h-screen">
