@@ -269,6 +269,11 @@
     "warrantyPdfLabel": "Política de Garantía — PDF",
     "contactLabel": "CONTACTO",
     "contactHeadline": "Contáctanos.",
+    "updatesLabel": "ACTUALIZACIONES",
+    "updatesHeadline": "Descarga la última actualización de tu módulo.",
+    "firmwareLabel": "Add Bank — .bin",
+    "updateVideoTitle": "Mira aquí cómo actualizar el módulo F50",
+    "updateVideoCta": "Ver",
     "download": "Descargar"
   },
   "dealers": {

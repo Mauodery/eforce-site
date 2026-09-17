@@ -17,3 +17,4 @@
 *.webm  binary
 *.mov   binary
 *.docx  binary
+*.bin   binary
