@@ -23,9 +23,8 @@ const FIRMWARES = [
 // Vídeo "como atualizar o módulo F50". Aceita um arquivo local
 // (/assets/video/...) ou um ID do YouTube. Com os dois vazios a
 // seção do vídeo simplesmente não é renderizada.
-const F50_UPDATE_VIDEO_SRC = "/assets/video/atualizacao-f50.mp4";
+const F50_UPDATE_VIDEO_SRC = "";
 const F50_UPDATE_VIDEO_YOUTUBE_ID = "";
-const F50_UPDATE_VIDEO_POSTER = "/assets/video/atualizacao-f50-poster.jpg";
 
 export default function SupportPage() {
   const { t } = useTranslation();
@@ -180,9 +179,7 @@ export default function SupportPage() {
                       gap: "0.75rem",
                       border: "none",
                       cursor: "pointer",
-                      background: F50_UPDATE_VIDEO_POSTER
-                        ? `linear-gradient(135deg, rgba(232,80,10,0.22), rgba(0,0,0,0.72)), url(${F50_UPDATE_VIDEO_POSTER}) center / contain no-repeat #000`
-                        : "linear-gradient(135deg, rgba(232,80,10,0.12), rgba(0,0,0,0.9))",
+                      background: "linear-gradient(135deg, rgba(232,80,10,0.12), rgba(0,0,0,0.9))",
                       color: "#fff",
                     }}
                   >
@@ -208,7 +205,6 @@ export default function SupportPage() {
                 ) : F50_UPDATE_VIDEO_SRC ? (
                   <video
                     src={F50_UPDATE_VIDEO_SRC}
-                    poster={F50_UPDATE_VIDEO_POSTER || undefined}
                     controls
                     autoPlay
                     playsInline
