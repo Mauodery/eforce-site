@@ -269,6 +269,11 @@
     "warrantyPdfLabel": "保修政策 — PDF",
     "contactLabel": "联系",
     "contactHeadline": "联系我们。",
+    "updatesLabel": "更新",
+    "updatesHeadline": "下载适用于您音源模块的最新更新。",
+    "firmwareLabel": "Add Bank — .bin",
+    "updateVideoTitle": "观看 F50 音源模块的更新方法",
+    "updateVideoCta": "观看",
     "download": "下载"
   },
   "dealers": {

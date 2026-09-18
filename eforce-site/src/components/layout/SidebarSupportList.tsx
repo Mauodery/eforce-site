@@ -13,6 +13,11 @@ const manuaisData = [
   { name: "EF5 V2", img: "/assets/images/kits/ef5v2-manual.webp", slug: "ef5v2" },
 ];
 
+const firmwaresData = [
+  { name: "EF5 V2", img: "/assets/images/kits/ef5v2-manual.webp", file: "EF5_EForce_AddBank_20260903_V1.42.bin", version: "V1.42" },
+  { name: "EF7 Eye Hybrid", img: "/assets/images/kits/ef5v2-manual.webp", file: "EF7_Hybrid_EForce_AddBank_20260903_V1.42.bin", version: "V1.42" },
+];
+
 function getManualHref(slug: string, lang: string | undefined) {
   const suffix = lang === "pt" ? "" : "-en";
   return `/assets/manuais/manual-${slug}${suffix}.pdf`;
@@ -55,6 +60,45 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
                   {item.name}
                 </p>
                 <p className="text-xs text-gray-400">{t('support.userManualLabel')}</p>
+              </div>
+              <svg className="w-4 h-4 text-gray-400 group-hover:text-brand-orange transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Atualizações */}
+      <div>
+        <Link
+          to={`/${lang}/support`}
+          onClick={onNavigate}
+          className="group block"
+        >
+          <h3 className="text-gray-900 font-bold text-xl mb-4 group-hover:text-brand-orange transition-colors">
+            {t('support.updatesLabel')}
+          </h3>
+        </Link>
+        <div className="flex flex-col gap-3">
+          {firmwaresData.map((item) => (
+            <a
+              key={item.name}
+              href={`/assets/firmware/${item.file}`}
+              download
+              className="flex items-center gap-3 group"
+            >
+              <img
+                src={item.img}
+                alt={item.name}
+                loading="lazy"
+                className="w-12 h-12 object-contain shrink-0 rounded"
+              />
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-orange transition-colors">
+                  {item.name}
+                </p>
+                <p className="text-xs text-gray-400">{t('support.firmwareLabel')} · {item.version}</p>
               </div>
               <svg className="w-4 h-4 text-gray-400 group-hover:text-brand-orange transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
