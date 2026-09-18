@@ -24,7 +24,7 @@ const FIRMWARES = [
 // (/assets/video/...) ou um ID do YouTube. Com os dois vazios a
 // seção do vídeo simplesmente não é renderizada.
 const F50_UPDATE_VIDEO_SRC = "";
-const F50_UPDATE_VIDEO_YOUTUBE_ID = "";
+const F50_UPDATE_VIDEO_YOUTUBE_ID = "igVyyqpZde0";
 
 export default function SupportPage() {
   const { t } = useTranslation();
