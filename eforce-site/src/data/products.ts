@@ -36,9 +36,7 @@ export interface Product {
     value: string;
     unit?: string;
   }[];
-  finishGallery?: { image: string | null; label: string }[];
-  /** Acabamento extra, exibido centralizado abaixo da galeria de acabamentos. */
-  extraFinish?: { image: string; labelKey: string };
+  finishGallery?: { image: string | null; label: string; labelKey?: string }[];
   highlights: {
     image: string;
     title: string;
@@ -483,9 +481,10 @@ export const products: Product[] = [
       "/assets/images/kits/ef5v2/ef5v2-aerial.webp",
     ],
     finishGallery: [
-      { image: "/assets/images/kits/ef5v2/ef5v2-acabamentos.png", label: "" },
+      { image: "/assets/images/kits/ef5v2/ef5v2-meco.webp", label: "MECO - All Mettalized Copper" },
+      { image: "/assets/images/kits/ef5v2/ef5v2-mesi.webp", label: "MESI - All Mettalized Silver" },
+      { image: "/assets/images/kits/ef5v2/ef5v2-bsci.webp", label: "", labelKey: "product.finishBsci" },
     ],
-    extraFinish: { image: "/assets/images/kits/ef5v2/ef5v2-bsci.webp", labelKey: "product.finishBsci" },
     techTabs: [],
   },
   {
@@ -510,7 +509,7 @@ export const products: Product[] = [
     soundDemo: undefined,
     specsHighlight: [
       { label: "Sons", value: "937" },
-      { label: "Kits Customizáveis", value: "50" },
+      { label: "Kits Customizáveis", value: "46" },
       { label: "Tipos de Reverb", value: "23" },
     ],
     highlights: [],

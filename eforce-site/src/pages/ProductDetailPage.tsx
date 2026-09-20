@@ -1040,35 +1040,25 @@ export default function ProductDetailPage() {
                     style={{ width: "100%", display: "block", objectFit: "contain" }}
                   />
                 ) : (
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(1rem, 2vw, 2rem)" }}>
-                    {product.finishGallery.map((finish) => (
-                      <div key={finish.label} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        <div style={{ aspectRatio: "1 / 1", background: "#f2f2f2", borderRadius: "4px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "clamp(1rem, 2vw, 2rem)" }}>
+                    {product.finishGallery.map((finish, fi) => {
+                      const label = finish.labelKey ? t(finish.labelKey) : finish.label;
+                      return (
+                      <div key={finish.labelKey || finish.label || fi} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                        <div style={{ aspectRatio: "3 / 2", background: "#fff", borderRadius: "4px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           {finish.image ? (
-                            <img src={finish.image} alt={finish.label} style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
+                            <img src={finish.image} alt={label} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                           ) : (
                             <span style={{ fontSize: "clamp(0.75rem, 1vw, 0.9rem)", color: "rgba(0,0,0,0.25)", letterSpacing: "0.05em" }}>{t('coming_soon')}</span>
                           )}
                         </div>
-                        {finish.label && <p style={{ margin: 0, fontSize: "clamp(0.8rem, 1vw, 0.95rem)", fontWeight: 600, color: "#111", letterSpacing: "-0.01em" }}>{finish.label}</p>}
+                        {label && <p style={{ margin: 0, textAlign: "center", fontSize: "clamp(0.8rem, 1vw, 0.95rem)", fontWeight: 600, color: "#111", letterSpacing: "-0.01em" }}>{label}</p>}
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
 
-                {product.extraFinish && (
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", marginTop: "clamp(1.5rem, 3vh, 2.5rem)" }}>
-                    <img
-                      src={product.extraFinish.image}
-                      alt={t(product.extraFinish.labelKey)}
-                      loading="lazy"
-                      style={{ width: "100%", maxWidth: "620px", display: "block", objectFit: "contain" }}
-                    />
-                    <p style={{ margin: 0, textAlign: "center", fontSize: "clamp(0.85rem, 1.1vw, 1rem)", fontWeight: 600, color: "#111", letterSpacing: "-0.01em" }}>
-                      {t(product.extraFinish.labelKey)}
-                    </p>
-                  </div>
-                )}
               </div>
             </section>
           )}
