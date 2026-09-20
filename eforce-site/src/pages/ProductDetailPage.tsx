@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, useSearchParams, Navigate, Link } from "react-router-dom";
 import { ModelsCTA } from "@/components/product/ModelsCTA";
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import SEO from "@/components/layout/SEO";
@@ -84,6 +84,8 @@ const defaultHighlights = [
    SECTION 1 — HERO (Porsche-style warm gray bg)
    ═══════════════════════════════════════════════════════ */
 function HeroSection({ product, isMobile }: { product: Product; isMobile: boolean }) {
+  /* Nomes longos (ex.: EF7 Odery Eyedentity Hybrid) estouram a linha no tamanho padr\u00e3o. */
+  const longName = product.name.length > 16;
   return (
     <section
       style={{
@@ -159,7 +161,9 @@ function HeroSection({ product, isMobile }: { product: Product; isMobile: boolea
           right: 0,
           zIndex: 1,
           textAlign: "center",
-          fontSize: isMobile ? "clamp(2.8rem, 14vw, 5rem)" : "clamp(4rem, 10vw, 9rem)",
+          fontSize: longName
+            ? (isMobile ? "clamp(1.25rem, 6.4vw, 2.2rem)" : "clamp(2.2rem, 5.2vw, 4.6rem)")
+            : (isMobile ? "clamp(2.8rem, 14vw, 5rem)" : "clamp(4rem, 10vw, 9rem)"),
           fontWeight: 800,
           fontStyle: "italic",
           color: "rgba(255,255,255,0.9)",
@@ -323,6 +327,8 @@ function KeySpecsSection({ product, isMobile }: { product: Product; isMobile: bo
                   ? { width: "105%", maxWidth: "none", objectFit: "contain", marginLeft: "-2%", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.1))" }
                   : product.slug === "ef5-v2"
                   ? { width: "112%", maxWidth: "none", objectFit: "contain", marginLeft: "-16%", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.1))" }
+                  : product.slug === "ef7-eye-hybrid"
+                  ? { width: "112%", maxWidth: "none", objectFit: "contain", marginLeft: "-10%", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.1))" }
                   : { width: "200%", maxWidth: "none", objectFit: "contain", marginLeft: "-50%", filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.1))" }
               }
               loading="lazy"
@@ -548,6 +554,9 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
   const { scrollYProgress } = useScroll({ target: rightImgRef, offset: ["start end", "end start"] });
   const rightY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [80, -80]);
 
+  const loopVideo = product.editorialLoopVideo || "/assets/video/hero-loop.mp4";
+  const loopPoster = product.editorialLoopPoster || "/assets/video/hero-poster.jpg";
+
   const bottomImgRef = useRef(null);
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
   const bottomX = useTransform(bottomProgress, [0, 1], isMobile ? [0, 0] : [-80, 80]);
@@ -559,7 +568,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
         <div
           style={{
             textAlign: "center",
-            fontSize: "clamp(4rem, 12vw, 10rem)",
+            fontSize: product.name.length > 16 ? "clamp(2rem, 6vw, 5rem)" : "clamp(4rem, 12vw, 10rem)",
             fontWeight: 800,
             fontStyle: "italic",
             color: "#0a0a0a",
@@ -582,7 +591,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 6rem)", overflow: "hidden", borderRadius: "20px" }}>
           {isMobile ? (
             <img
-              src="/assets/video/hero-poster.jpg"
+              src={loopPoster}
               alt=""
               aria-hidden="true"
               style={{
@@ -601,7 +610,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
               loop
               muted
               playsInline
-              poster="/assets/video/hero-poster.jpg"
+              poster={loopPoster}
               style={{
                 width: "100%",
                 height: "clamp(400px, 50vw, 700px)",
@@ -612,7 +621,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
                 borderRadius: "12px",
               }}
             >
-              <source src="/assets/video/hero-loop.mp4" type="video/mp4" />
+              <source key={loopVideo} src={loopVideo} type="video/mp4" />
             </video>
           )}
         </div>
@@ -803,7 +812,10 @@ function HighlightsCarousel({ product, isMobile }: { product: Product; isMobile:
   const mid = Math.ceil(cards.length / 2);
   const row1 = twoRows ? cards.slice(0, mid) : cards;
   const row2 = twoRows ? cards.slice(mid) : [];
-  const cardHeight = isMobile ? "clamp(220px, 55vw, 320px)" : "clamp(350px, 40vw, 500px)";
+  const tallCards = product.slug === "ef7-eye-hybrid";
+  const cardHeight = isMobile
+    ? (tallCards ? "clamp(280px, 70vw, 400px)" : "clamp(220px, 55vw, 320px)")
+    : (tallCards ? "clamp(420px, 46vw, 620px)" : "clamp(350px, 40vw, 500px)");
 
   const scrollBoth = (delta: number) => {
     scrollRef.current?.scrollBy({ left: delta, behavior: "smooth" });
@@ -919,6 +931,8 @@ function HighlightsCarousel({ product, isMobile }: { product: Product; isMobile:
    ═══════════════════════════════════════════════════════ */
 export default function ProductDetailPage() {
   const { model, lang } = useParams();
+  const [searchParams] = useSearchParams();
+  const isPreview = searchParams.get("preview") === "1";
   const { t } = useTranslation();
   const [switcherOpen, setSwitcherOpen] = useState(false);
   const isMobile = useIsMobile();
@@ -940,8 +954,10 @@ export default function ProductDetailPage() {
     brand: { "@type": "Brand", name: "E-Force" },
   };
 
+  /* P\u00e1ginas prontas, mas ainda n\u00e3o publicadas.
+     Abrir com ?preview=1 mostra a p\u00e1gina completa para revis\u00e3o interna. */
   const COMING_SOON_IDS = ["ef7eye"];
-  if (COMING_SOON_IDS.includes(product.id)) {
+  if (COMING_SOON_IDS.includes(product.id) && !isPreview) {
     return (
       <>
         <SEO title={`${product.name} | E-Force`} description={product.description} lang={lang ?? "en"} path={`/kits/${product.slug}`} schema={productSchema} />
@@ -1040,7 +1056,7 @@ export default function ProductDetailPage() {
                     style={{ width: "100%", display: "block", objectFit: "contain" }}
                   />
                 ) : (
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "clamp(1rem, 2vw, 2rem)" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(product.finishGallery!.length, 3)}, 1fr)`, gap: "clamp(1rem, 2vw, 2rem)", maxWidth: product.finishGallery!.length < 3 ? "860px" : undefined }}>
                     {product.finishGallery.map((finish, fi) => {
                       const label = finish.labelKey ? t(finish.labelKey) : finish.label;
                       return (
@@ -1123,13 +1139,15 @@ export default function ProductDetailPage() {
           )}
 
         {/* Video antes dos destaques */}
-        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4"] as const).includes(product.slug as any) && (() => {
+        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4", "ef7-eye-hybrid"] as const).includes(product.slug as any) && (() => {
           const videoIds: Record<string, string> = {
             "ef5-v2": "uKXTqqVa-DA",
             "ef2-v1": "Jux50AKrrJw",
             "ef2-v2": "rXeNjRfy7vU",
             "ef2-v3": "YGQdWYZ_d70",
             "ef2-v4": "sk32_ptcBig",
+            // Placeholder: o Mauricio ainda vai definir o v\u00eddeo da EF7.
+            "ef7-eye-hybrid": "uKXTqqVa-DA",
           };
           return (
             <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>
