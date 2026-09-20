@@ -742,6 +742,7 @@ function HighlightCard({ card, cardHeight, index = 0, isMobile }: { card: { imag
         }}
         loading="lazy"
       />
+      {(card.title || card.description) && (
       <div
         style={{
           position: "absolute",
@@ -770,6 +771,7 @@ function HighlightCard({ card, cardHeight, index = 0, isMobile }: { card: { imag
           </p>
         </div>
       </div>
+      )}
     </div>
   );
 }
@@ -1010,6 +1012,20 @@ export default function ProductDetailPage() {
             );
           })()}
 
+          {/* Foto do kit logo após o texto introdutório */}
+          {product.introImage && (
+            <section style={{ background: "#fff", padding: "0 clamp(1.5rem, 6vw, 6rem) clamp(2rem, 4vh, 3.5rem)" }}>
+              <AnimatedSection style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  src={product.introImage}
+                  alt={product.name}
+                  loading="lazy"
+                  style={{ width: "100%", maxWidth: "1100px", display: "block", objectFit: "contain" }}
+                />
+              </AnimatedSection>
+            </section>
+          )}
+
           {/* Finish gallery */}
           {product.finishGallery && product.finishGallery.length > 0 && (
             <section style={{ background: "#fff", padding: "clamp(2rem, 4vh, 3.5rem) clamp(1.5rem, 6vw, 6rem)" }}>
@@ -1039,6 +1055,20 @@ export default function ProductDetailPage() {
                     ))}
                   </div>
                 )}
+
+                {product.extraFinish && (
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.75rem", marginTop: "clamp(1.5rem, 3vh, 2.5rem)" }}>
+                    <img
+                      src={product.extraFinish.image}
+                      alt={t(product.extraFinish.labelKey)}
+                      loading="lazy"
+                      style={{ width: "100%", maxWidth: "620px", display: "block", objectFit: "contain" }}
+                    />
+                    <p style={{ margin: 0, textAlign: "center", fontSize: "clamp(0.85rem, 1.1vw, 1rem)", fontWeight: 600, color: "#111", letterSpacing: "-0.01em" }}>
+                      {t(product.extraFinish.labelKey)}
+                    </p>
+                  </div>
+                )}
               </div>
             </section>
           )}
@@ -1060,7 +1090,20 @@ export default function ProductDetailPage() {
                       ) : (
                         <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "clamp(0.95rem, 1.15vw, 1.15rem)", fontWeight: 700, color: "#111", lineHeight: 1.5 }}>
                           <span style={{ color: "#E8500A", marginTop: "0.2em", flexShrink: 0 }}>•</span>
-                          {item}
+                          <span>
+                            {item}
+                            {item.includes(product.module) && (
+                              <>
+                                {" "}
+                                <Link
+                                  to={`/${lang}/technology`}
+                                  style={{ color: "#E8500A", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "0.2em" }}
+                                >
+                                  ({t('product.accessHere')})
+                                </Link>
+                              </>
+                            )}
+                          </span>
                         </li>
                       )
                     ))}

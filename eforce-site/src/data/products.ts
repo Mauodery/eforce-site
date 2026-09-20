@@ -37,6 +37,8 @@ export interface Product {
     unit?: string;
   }[];
   finishGallery?: { image: string | null; label: string }[];
+  /** Acabamento extra, exibido centralizado abaixo da galeria de acabamentos. */
+  extraFinish?: { image: string; labelKey: string };
   highlights: {
     image: string;
     title: string;
@@ -54,6 +56,8 @@ export interface Product {
   fullKitImage?: string;
   kitConfig?: string[];
   introLines?: string[];
+  /** Foto exibida logo após o texto introdutório. */
+  introImage?: string;
   galleryImages: string[];
   techTabs: {
     label: string;
@@ -427,6 +431,7 @@ export const products: Product[] = [
       "A e-Force EF5 versão 2 powered by Odery eleva a proposta da linha para um novo patamar de profissionalismo, combinando o poderoso módulo F50 (topo de linha), tambores acústicos com canoas e bases Odery Eyedentity series, bumbo com pele dos dois lados, novo pé de bumbo Odery assim como uma configuração mais robusta para músicos que buscam mais recursos, presença e performance em altíssimo nível.",
       "Com pratos maiores e estilo Full Cover, interface mais avançada e visual mais completo, a EF5 V2 atende muito bem quem busca uma experiência mais sofisticada e profissional dentro da linha E-Force.",
     ],
+    introImage: "/assets/images/kits/ef5v2/ef5v2-kit-apos-texto.webp",
     finishes: [
       { id: "black", name: "Midnight Black", color: "#1a1a2e", image: "/assets/images/kits/ef5v2/ef5v2-hero.webp" },
       { id: "pearl", name: "Pearl White", color: "#e8e8e8", image: "/assets/images/kits/ef5v2/ef5v2-hero.webp" },
@@ -449,19 +454,21 @@ export const products: Product[] = [
     soundDemo: undefined,
     specsHighlight: [
       { label: "Sons", value: "937" },
-      { label: "Kits Customizáveis", value: "50" },
+      { label: "Kits Customizáveis", value: "46" },
       { label: "Tipos de Reverb", value: "23" },
       { label: "Módulo", value: "F50" },
     ],
     highlights: [
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-3.webp", title: "Módulo F50.", description: "O poder e a força de um módulo altamente tecnológico, moderno e profissional.", objectFit: "contain" as const },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest1.webp", title: "Novo pé de bumbo Odery.", description: "Estrutura sólida que proporciona estabilidade e segurança. Pode ser usado na âncora ou na borracha (com troca rápida).", objectFit: "cover" as const, objectPosition: "bottom", cardWidth: "clamp(306px, 34vw, 450px)", scale: 1.05 },
+      { image: "/assets/images/kits/ef5v2/ef5v2-dest-bsci-frontal.webp", title: "", description: "", objectFit: "cover" as const },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-4.webp", title: "Ferragens Odery Eyedentity.", description: "Canoas, bases e extensores Odery Eyedentity com visual contemporâneo e minimalista. Extremamente sólido e confiável." },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-5.webp", title: "Minimalismo em cada detalhe.", description: "Rack tubular curvo e com cabos ocultos (internos). Fácil de montar, visual limpo e organizado sem cabos passando por toda a bateria." },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-6.webp", title: "Acabamentos refinados.", description: "Cores discretas mas de beleza ímpar que faz da EF5 uma bateria de estilo único e forte identidade." },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-7.webp", title: "Pensada em cada detalhe.", description: "Plaquinha de identificação como a cereja do bolo afinal, cada detalhe importa. Cada detalhe eleva o nível de percepção de qualidade e-Force.", objectFit: "cover" as const, cardWidth: "clamp(500px, 62vw, 780px)" },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-8.webp", title: "Rack único.", description: "Rack curvo tubular e que oculta os cabos. Design único, prático, fácil de montar, praticamente Plug & Play." },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-9.webp", title: "Detalhes e detalhes.", description: "Aqui você vê o detalhe da borracha de acabamento do casco de madeira. Mais uma vez demonstrando a preocupação com a qualidade e visual em cada detalhe." },
+      { image: "/assets/images/kits/ef5v2/ef5v2-dest-bsci-modulo.webp", title: "", description: "", objectFit: "cover" as const },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-10.webp", title: "Construção.", description: "Cascos de madeira com todos os itens de tecnologia interna de forma organizada, limpa e bem estruturada." },
       { image: "/assets/images/kits/ef5v2/ef5v2-dest-11.webp", title: "Pratos Full Cover.", description: "Pratos top de linha com toque sensível e suave, além de um visual moderno e com funções completas para atender o mais exigente baterista." },
     ],
@@ -478,6 +485,7 @@ export const products: Product[] = [
     finishGallery: [
       { image: "/assets/images/kits/ef5v2/ef5v2-acabamentos.png", label: "" },
     ],
+    extraFinish: { image: "/assets/images/kits/ef5v2/ef5v2-bsci.webp", labelKey: "product.finishBsci" },
     techTabs: [],
   },
   {
