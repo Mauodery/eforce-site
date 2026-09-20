@@ -504,8 +504,8 @@ export const products: Product[] = [
     module: "F50",
     badge: "home.flagship",
     heroImage: "/assets/images/kits/ef7eye/ef7eye-teal-nobg.webp",
-    menuImage: "/assets/images/kits/ef7eye/ef7eye-teal-nobg.webp",
-    showcaseImage: "/assets/images/kits/ef7eye/ef7eye-teal-nobg.webp",
+    menuImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
+    showcaseImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
     specsImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
     fullKitImage: "/assets/images/kits/ef7eye/ef7eye-fullkit-teal.webp",
     introLines: [
