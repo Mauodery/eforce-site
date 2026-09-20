@@ -172,6 +172,22 @@ export const productTranslations: Record<string, Record<string, ProductTranslati
     ef7eye: {
       tagline: "The summit. The statement.",
       description: "Where acoustic form and electronic capability unite without compromise. The definitive E-Force experience.",
+      editorialHeadline: "Where two worlds meet.",
+      editorialBody: "A true Odery Eyedentity acoustic kit in American maple, paired with the F50 sound module. The EF7 plays electronic or acoustic — just swap the heads — delivering presence and performance that are exceptionally rare in this market.",
+      highlights: [
+        { title: "F50 Module.", description: "The power and strength of a highly technological, modern and professional module." },
+        { title: "Impeccable finish.", description: "Mesh heads and a rubber ring fitted to the hoops." },
+        { title: "Built with attention to the smallest details.", description: "For the union of two worlds." },
+        { title: "Full Cover cymbal pads with high sensitivity.", description: "" },
+        { title: "American maple shells.", description: "And the Odery signature on every piece." },
+        { title: "Meduza harness connects every drum.", description: "Ready for expansion." },
+        { title: "Meduza connects quickly and easily.", description: "" },
+        { title: "Finishes at the highest level on the market.", description: "" },
+      ],
+      introLines: [
+        "The e-Force EF7 is an Odery Eyedentity drum kit in 100% American maple and the pinnacle of the E-Force line: a genuine top-tier acoustic kit paired with the powerful F50 sound module, whose feature set ranks among the most professional on the market. The kit can be played electronically or acoustically (drumheads must be swapped). The EF7 Odery Eyedentity delivers a unique look with presence and performance that are exceptionally rare in the electronic drum market.",
+        "With larger Full Cover cymbal pads, a more advanced interface and a more complete look, the EF7 serves the highest tier of the electronic drum market and adds an experience all its own.",
+      ],
     },
   },
 
@@ -338,6 +354,22 @@ export const productTranslations: Record<string, Record<string, ProductTranslati
     ef7eye: {
       tagline: "Il vertice. La dichiarazione.",
       description: "Dove la forma acustica e la capacità elettronica si uniscono senza compromessi. L'esperienza E-Force definitiva.",
+      editorialHeadline: "L'unione di due mondi.",
+      editorialBody: "Una vera batteria acustica Odery Eyedentity in acero americano, abbinata al modulo sonoro F50. La EF7 si suona in elettronico o in acustico — basta cambiare le pelli — e offre presenza e performance di estrema rarità in questo mercato.",
+      highlights: [
+        { title: "Modulo F50.", description: "La potenza e la forza di un modulo altamente tecnologico, moderno e professionale." },
+        { title: "Finitura impeccabile.", description: "Pelli mesh e anello in gomma montato sui cerchi." },
+        { title: "Costruzione curata nei minimi dettagli.", description: "Per l'unione di due mondi." },
+        { title: "Piatti Full Cover ad alta sensibilità.", description: "" },
+        { title: "Fusti in acero americano.", description: "E la firma Odery su ogni componente." },
+        { title: "Meduza per il collegamento di tutti i tamburi.", description: "Pronta per l'espansione." },
+        { title: "Meduza si collega in modo rapido e pratico.", description: "" },
+        { title: "Finiture ai massimi livelli del mercato.", description: "" },
+      ],
+      introLines: [
+        "La e-Force EF7 è una batteria Odery Eyedentity in acero americano al 100% e rappresenta il vertice della linea E-Force: una vera batteria acustica di alta gamma abbinata al potente modulo sonoro F50, con funzioni tra le più professionali del mercato. Il kit può essere suonato sia in modo elettronico sia in modo acustico (è necessario sostituire le pelli). La EF7 Odery Eyedentity offre un'estetica unica, con presenza e performance di estrema rarità nel mercato delle batterie elettroniche.",
+        "Con piatti Full Cover di dimensioni maggiori, un'interfaccia più avanzata e un'estetica più completa, la EF7 si rivolge alla fascia più alta del mercato delle batterie elettroniche, aggiungendo un'esperienza unica.",
+      ],
     },
   },
 
@@ -504,6 +536,22 @@ export const productTranslations: Record<string, Record<string, ProductTranslati
     ef7eye: {
       tagline: "Die Spitze. Das Statement.",
       description: "Wo akustische Form und elektronische Leistungsfähigkeit kompromisslos verschmelzen. Das ultimative E-Force-Erlebnis.",
+      editorialHeadline: "Wo zwei Welten verschmelzen.",
+      editorialBody: "Ein echtes akustisches Odery-Eyedentity-Set aus amerikanischem Ahorn, kombiniert mit dem F50-Soundmodul. Die EF7 lässt sich elektronisch oder akustisch spielen — einfach die Felle tauschen — und liefert eine Präsenz und Performance, wie es sie in diesem Markt nur äußerst selten gibt.",
+      highlights: [
+        { title: "F50-Modul.", description: "Die Kraft und Stärke eines hochtechnologischen, modernen und professionellen Moduls." },
+        { title: "Makellose Verarbeitung.", description: "Mesh-Heads und ein Gummiring an den Spannreifen." },
+        { title: "Bis ins kleinste Detail durchdacht gebaut.", description: "Für die Verbindung zweier Welten." },
+        { title: "Full-Cover-Beckenpads mit hoher Ansprechempfindlichkeit.", description: "" },
+        { title: "Kessel aus amerikanischem Ahorn.", description: "Und die Odery-Signatur an jedem Bauteil." },
+        { title: "Meduza verbindet alle Trommeln.", description: "Erweiterbar." },
+        { title: "Meduza lässt sich schnell und unkompliziert anschließen.", description: "" },
+        { title: "Finishes auf höchstem Niveau am Markt.", description: "" },
+      ],
+      introLines: [
+        "Die e-Force EF7 ist ein Odery-Eyedentity-Schlagzeug aus 100 % amerikanischem Ahorn und die Krönung der E-Force-Linie: ein echtes akustisches Spitzenset, kombiniert mit dem leistungsstarken F50-Soundmodul, dessen Funktionsumfang zu den professionellsten am Markt zählt. Das Set lässt sich sowohl elektronisch als auch akustisch spielen (die Felle müssen getauscht werden). Die EF7 Odery Eyedentity bietet eine einzigartige Optik mit einer Präsenz und Performance, wie es sie im Markt der E-Drums nur äußerst selten gibt.",
+        "Mit größeren Full-Cover-Beckenpads, einer fortschrittlicheren Bedienoberfläche und einer vollständigeren Optik bedient die EF7 das höchste Segment des E-Drum-Markts und schafft ein ganz eigenes Spielerlebnis.",
+      ],
     },
   },
 
@@ -670,6 +718,22 @@ export const productTranslations: Record<string, Record<string, ProductTranslati
     ef7eye: {
       tagline: "巅峰之作。宣言之器。",
       description: "原声形态与电子性能毫无妥协地融为一体。E-Force的终极体验。",
+      editorialHeadline: "两个世界的融合。",
+      editorialBody: "真正的 Odery Eyedentity 美国枫木声学鼓，搭配 F50 音源模块。EF7 可以以电子方式演奏，也可更换鼓皮后作为声学鼓演奏，带来在本市场极为罕见的存在感与演奏表现。",
+      highlights: [
+        { title: "F50 音源模块。", description: "高度科技化、现代而专业的模块所带来的力量。" },
+        { title: "精湛的做工。", description: "网状鼓皮，鼓圈上装有橡胶静音环。" },
+        { title: "每一个细节都经过精心设计。", description: "为了两个世界的融合。" },
+        { title: "高灵敏度 Full Cover 镲片。", description: "" },
+        { title: "美国枫木鼓身。", description: "每一个部件上都有 Odery 签名。" },
+        { title: "Meduza 连接所有鼓件。", description: "支持扩展。" },
+        { title: "Meduza 连接快捷而实用。", description: "" },
+        { title: "市场上最高水准的喷漆工艺。", description: "" },
+      ],
+      introLines: [
+        "e-Force EF7 是一套 100% 美国枫木的 Odery Eyedentity 鼓，也是 E-Force 产品线的巅峰：真正的顶级声学鼓，搭配功能位列市场最专业之列的强大 F50 音源模块。此鼓组既可以电子方式演奏，也可以声学方式演奏（需更换鼓皮）。EF7 Odery Eyedentity 呈现独一无二的外观，其存在感与演奏表现在电子鼓市场中极为罕见。",
+        "更大尺寸的 Full Cover 镲片、更先进的操作界面与更完整的外观，使 EF7 面向电子鼓市场的最高端，带来独特的演奏体验。",
+      ],
     },
   },
 
@@ -836,6 +900,22 @@ export const productTranslations: Record<string, Record<string, ProductTranslati
     ef7eye: {
       tagline: "La cima. La declaración.",
       description: "Donde la forma acústica y la capacidad electrónica se unen sin concesiones. La experiencia E-Force definitiva.",
+      editorialHeadline: "La unión de dos mundos.",
+      editorialBody: "Una verdadera batería acústica Odery Eyedentity en arce americano, combinada con el módulo de sonido F50. La EF7 se toca en electrónico o en acústico — basta con cambiar los parches — y ofrece una presencia y una performance de extrema rareza en este mercado.",
+      highlights: [
+        { title: "Módulo F50.", description: "La potencia y la fuerza de un módulo altamente tecnológico, moderno y profesional." },
+        { title: "Acabado primoroso.", description: "Parches mesh y anillo de goma instalado en los aros." },
+        { title: "Construcción pensada hasta en el mínimo detalle.", description: "Para la unión de dos mundos." },
+        { title: "Platos Full Cover de alta sensibilidad.", description: "" },
+        { title: "Cascos en arce americano.", description: "Y la firma Odery en todas las piezas." },
+        { title: "Meduza para la conexión de todos los tambores.", description: "Permite la expansión." },
+        { title: "Meduza conectada de forma rápida y práctica.", description: "" },
+        { title: "Acabados del más alto nivel del mercado.", description: "" },
+      ],
+      introLines: [
+        "La e-Force EF7 es una batería Odery Eyedentity en arce americano 100% y la cúspide de la línea E-Force: una verdadera batería acústica de alta gama combinada con el potente módulo de sonido F50, cuyas prestaciones están entre las más profesionales del mercado. El kit puede tocarse tanto de forma electrónica como acústica (es necesario cambiar los parches). La EF7 Odery Eyedentity ofrece una estética única, con una presencia y una performance de extrema rareza en el mercado de las baterías electrónicas.",
+        "Con platos Full Cover de mayor tamaño, una interfaz más avanzada y una estética más completa, la EF7 atiende a la gama más alta del mercado de baterías electrónicas y añade una experiencia única.",
+      ],
     },
   },
 };
