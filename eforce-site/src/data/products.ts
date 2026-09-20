@@ -51,6 +51,9 @@ export interface Product {
   editorialBody?: string;
   editorialVerticalImage?: string;
   editorialHorizontalImage?: string;
+  /** V\u00eddeo em loop do bloco editorial. Sem isso, usa o loop padr\u00e3o da linha. */
+  editorialLoopVideo?: string;
+  editorialLoopPoster?: string;
   fullKitImage?: string;
   kitConfig?: string[];
   introLines?: string[];
@@ -530,8 +533,8 @@ export const products: Product[] = [
       { image: "/assets/images/kits/ef7eye/ef7eye-dest-meduza-v.webp", title: "Meduza conectada de forma r\u00e1pida e pr\u00e1tica.", description: "", objectFit: "cover" as const, cardWidth: "clamp(230px, 26vw, 350px)" },
       { image: "/assets/images/kits/ef7eye/ef7eye-dest-acabamentos.webp", title: "Acabamentos do mais alto n\u00edvel do mercado.", description: "", objectFit: "cover" as const, cardWidth: "clamp(400px, 62vw, 1100px)" },
     ],
-    editorialHeadline: "A uni\u00e3o dos dois mundos.",
-    editorialBody: "Uma verdadeira bateria ac\u00fastica Odery Eyedentity em Maple americano, combinada ao m\u00f3dulo F50. A EF7 se toca eletr\u00f4nica ou ac\u00fastica \u2014 basta trocar as peles \u2014 e entrega presen\u00e7a e performance de extrema raridade neste mercado.",
+    editorialHeadline: "A experi\u00eancia perfeita",
+    editorialBody: "S\u00e3o mais de 03 d\u00e9cadas de experi\u00eancia construindo baterias ac\u00fasticas aliadas \u00e0 um time de tecnologia de ponta para entregar a melhor experi\u00eancia h\u00edbrida do mercado.",
     editorialVerticalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-vertical.webp",
     editorialHorizontalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-horizontal.webp",
     galleryImages: [

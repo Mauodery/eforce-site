@@ -554,6 +554,9 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
   const { scrollYProgress } = useScroll({ target: rightImgRef, offset: ["start end", "end start"] });
   const rightY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [80, -80]);
 
+  const loopVideo = product.editorialLoopVideo || "/assets/video/hero-loop.mp4";
+  const loopPoster = product.editorialLoopPoster || "/assets/video/hero-poster.jpg";
+
   const bottomImgRef = useRef(null);
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
   const bottomX = useTransform(bottomProgress, [0, 1], isMobile ? [0, 0] : [-80, 80]);
@@ -588,7 +591,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 6rem)", overflow: "hidden", borderRadius: "20px" }}>
           {isMobile ? (
             <img
-              src="/assets/video/hero-poster.jpg"
+              src={loopPoster}
               alt=""
               aria-hidden="true"
               style={{
@@ -607,7 +610,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
               loop
               muted
               playsInline
-              poster="/assets/video/hero-poster.jpg"
+              poster={loopPoster}
               style={{
                 width: "100%",
                 height: "clamp(400px, 50vw, 700px)",
@@ -618,7 +621,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
                 borderRadius: "12px",
               }}
             >
-              <source src="/assets/video/hero-loop.mp4" type="video/mp4" />
+              <source key={loopVideo} src={loopVideo} type="video/mp4" />
             </video>
           )}
         </div>
