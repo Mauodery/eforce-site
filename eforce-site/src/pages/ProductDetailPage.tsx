@@ -742,6 +742,7 @@ function HighlightCard({ card, cardHeight, index = 0, isMobile }: { card: { imag
         }}
         loading="lazy"
       />
+      {(card.title || card.description) && (
       <div
         style={{
           position: "absolute",
@@ -770,6 +771,7 @@ function HighlightCard({ card, cardHeight, index = 0, isMobile }: { card: { imag
           </p>
         </div>
       </div>
+      )}
     </div>
   );
 }
@@ -1010,6 +1012,20 @@ export default function ProductDetailPage() {
             );
           })()}
 
+          {/* Foto do kit logo após o texto introdutório */}
+          {product.introImage && (
+            <section style={{ background: "#fff", padding: "0 clamp(1.5rem, 6vw, 6rem) clamp(2rem, 4vh, 3.5rem)" }}>
+              <AnimatedSection style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  src={product.introImage}
+                  alt={product.name}
+                  loading="lazy"
+                  style={{ width: "100%", maxWidth: "1100px", display: "block", objectFit: "contain" }}
+                />
+              </AnimatedSection>
+            </section>
+          )}
+
           {/* Finish gallery */}
           {product.finishGallery && product.finishGallery.length > 0 && (
             <section style={{ background: "#fff", padding: "clamp(2rem, 4vh, 3.5rem) clamp(1.5rem, 6vw, 6rem)" }}>
@@ -1024,21 +1040,25 @@ export default function ProductDetailPage() {
                     style={{ width: "100%", display: "block", objectFit: "contain" }}
                   />
                 ) : (
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(1rem, 2vw, 2rem)" }}>
-                    {product.finishGallery.map((finish) => (
-                      <div key={finish.label} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                        <div style={{ aspectRatio: "1 / 1", background: "#f2f2f2", borderRadius: "4px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : "repeat(3, 1fr)", gap: "clamp(1rem, 2vw, 2rem)" }}>
+                    {product.finishGallery.map((finish, fi) => {
+                      const label = finish.labelKey ? t(finish.labelKey) : finish.label;
+                      return (
+                      <div key={finish.labelKey || finish.label || fi} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                        <div style={{ aspectRatio: "3 / 2", background: "#fff", borderRadius: "4px", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           {finish.image ? (
-                            <img src={finish.image} alt={finish.label} style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }} />
+                            <img src={finish.image} alt={label} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                           ) : (
                             <span style={{ fontSize: "clamp(0.75rem, 1vw, 0.9rem)", color: "rgba(0,0,0,0.25)", letterSpacing: "0.05em" }}>{t('coming_soon')}</span>
                           )}
                         </div>
-                        {finish.label && <p style={{ margin: 0, fontSize: "clamp(0.8rem, 1vw, 0.95rem)", fontWeight: 600, color: "#111", letterSpacing: "-0.01em" }}>{finish.label}</p>}
+                        {label && <p style={{ margin: 0, textAlign: "center", fontSize: "clamp(0.8rem, 1vw, 0.95rem)", fontWeight: 600, color: "#111", letterSpacing: "-0.01em" }}>{label}</p>}
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
+
               </div>
             </section>
           )}
@@ -1060,7 +1080,20 @@ export default function ProductDetailPage() {
                       ) : (
                         <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.5rem", fontSize: "clamp(0.95rem, 1.15vw, 1.15rem)", fontWeight: 700, color: "#111", lineHeight: 1.5 }}>
                           <span style={{ color: "#E8500A", marginTop: "0.2em", flexShrink: 0 }}>•</span>
-                          {item}
+                          <span>
+                            {item}
+                            {item.includes(product.module) && (
+                              <>
+                                {" "}
+                                <Link
+                                  to={`/${lang}/technology`}
+                                  style={{ color: "#E8500A", fontWeight: 700, textDecoration: "underline", textUnderlineOffset: "0.2em" }}
+                                >
+                                  ({t('product.accessHere')})
+                                </Link>
+                              </>
+                            )}
+                          </span>
                         </li>
                       )
                     ))}
