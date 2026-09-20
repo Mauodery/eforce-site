@@ -556,6 +556,8 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
 
   const loopVideo = product.editorialLoopVideo || "/assets/video/hero-loop.mp4";
   const loopPoster = product.editorialLoopPoster || "/assets/video/hero-poster.jpg";
+  /* Quando definido, o loop aparece pequeno e centralizado, na propor\u00e7\u00e3o dele. */
+  const loopWidth = product.editorialLoopMaxWidth;
 
   const bottomImgRef = useRef(null);
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
@@ -588,15 +590,15 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
           background: "linear-gradient(to bottom, #ffffff 50%, #0a0a0a 50%)",
         }}
       >
-        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 6rem)", overflow: "hidden", borderRadius: "20px" }}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 6rem)", overflow: "hidden", borderRadius: "20px", ...(loopWidth ? { display: "flex", justifyContent: "center" } : {}) }}>
           {isMobile ? (
             <img
               src={loopPoster}
               alt=""
               aria-hidden="true"
               style={{
-                width: "100%",
-                height: "clamp(200px, 55vw, 350px)",
+                width: loopWidth ?? "100%",
+                height: loopWidth ? "auto" : "clamp(200px, 55vw, 350px)",
                 objectFit: "cover",
                 display: "block",
                 position: "relative",
@@ -612,8 +614,8 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
               playsInline
               poster={loopPoster}
               style={{
-                width: "100%",
-                height: "clamp(400px, 50vw, 700px)",
+                width: loopWidth ?? "100%",
+                height: loopWidth ? "auto" : "clamp(400px, 50vw, 700px)",
                 objectFit: "cover",
                 display: "block",
                 position: "relative",
