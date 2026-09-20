@@ -54,6 +54,8 @@ export interface Product {
   /** V\u00eddeo em loop do bloco editorial. Sem isso, usa o loop padr\u00e3o da linha. */
   editorialLoopVideo?: string;
   editorialLoopPoster?: string;
+  /** Largura do loop do bloco editorial. Sem isso, ele ocupa a faixa inteira. */
+  editorialLoopMaxWidth?: string;
   fullKitImage?: string;
   kitConfig?: string[];
   introLines?: string[];
@@ -502,8 +504,8 @@ export const products: Product[] = [
     module: "F50",
     badge: "home.flagship",
     heroImage: "/assets/images/kits/ef7eye/ef7eye-teal-nobg.webp",
-    menuImage: "/assets/images/kits/ef7eye/ef7eye-teal-nobg.webp",
-    showcaseImage: "/assets/images/kits/ef7eye/ef7eye-teal-nobg.webp",
+    menuImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
+    showcaseImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
     specsImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
     fullKitImage: "/assets/images/kits/ef7eye/ef7eye-fullkit-teal.webp",
     introLines: [
@@ -537,6 +539,7 @@ export const products: Product[] = [
     editorialBody: "S\u00e3o mais de 03 d\u00e9cadas de experi\u00eancia construindo baterias ac\u00fasticas aliadas \u00e0 um time de tecnologia de ponta para entregar a melhor experi\u00eancia h\u00edbrida do mercado.",
     editorialLoopVideo: "/assets/video/ef7-editorial-loop.mp4",
     editorialLoopPoster: "/assets/video/ef7-editorial-loop-poster.jpg",
+    editorialLoopMaxWidth: "clamp(240px, 32vw, 460px)",
     editorialVerticalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-vertical.webp",
     editorialHorizontalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-horizontal.webp",
     galleryImages: [
