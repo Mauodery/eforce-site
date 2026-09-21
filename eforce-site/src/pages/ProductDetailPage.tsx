@@ -680,7 +680,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
             </p>
           </motion.div>
 
-          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : cascade ? "clamp(4rem, 7.5vw, 8rem)" : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : cascade ? "clamp(-15rem, -16vw, -11rem)" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : cascade ? 0 : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
+          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : cascade ? "clamp(4rem, 7.5vw, 8rem)" : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : cascade ? "clamp(-11rem, -12vw, -8rem)" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : cascade ? 0 : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
             <img
               src={rightImage}
               alt={`${product.name} detail`}
