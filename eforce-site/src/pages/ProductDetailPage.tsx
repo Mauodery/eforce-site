@@ -550,9 +550,12 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
     product.editorialBody ||
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.";
 
+  /* Cascata do editorial: a foto vertical sobe sobre o v\u00eddeo e a horizontal sobe sobre ela. */
+  const cascade = product.slug === "ef7-eye-hybrid";
+
   const rightImgRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: rightImgRef, offset: ["start end", "end start"] });
-  const rightY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [80, -80]);
+  const rightY = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : cascade ? [40, -40] : [80, -80]);
 
   const loopVideo = product.editorialLoopVideo || "/assets/video/hero-loop.mp4";
   const loopPoster = product.editorialLoopPoster || "/assets/video/hero-poster.jpg";
@@ -563,7 +566,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
 
   const bottomImgRef = useRef(null);
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
-  const bottomX = useTransform(bottomProgress, [0, 1], isMobile ? [0, 0] : [-80, 80]);
+  const bottomX = useTransform(bottomProgress, [0, 1], isMobile || cascade ? [0, 0] : [-80, 80]);
 
   return (
     <section style={{ background: "#fff", position: "relative" }}>
@@ -637,7 +640,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
           style={{
             maxWidth: "1200px",
             margin: "0 auto",
-            padding: isMobile ? "clamp(2rem, 4vh, 3rem) clamp(1rem, 4vw, 2rem) 0" : product.slug === "ef5-v2" ? "clamp(10rem, 18vh, 14rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 6vh, 5rem)" : "clamp(7rem, 14vh, 11rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 6vh, 5rem)",
+            padding: isMobile ? "clamp(2rem, 4vh, 3rem) clamp(1rem, 4vw, 2rem) 0" : product.slug === "ef5-v2" ? "clamp(10rem, 18vh, 14rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 6vh, 5rem)" : cascade ? "clamp(3rem, 6vh, 4.5rem) clamp(1.5rem, 6vw, 6rem) clamp(2rem, 4vh, 3rem)" : "clamp(7rem, 14vh, 11rem) clamp(1.5rem, 6vw, 6rem) clamp(3rem, 6vh, 5rem)",
             display: "grid",
             gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
             gap: "clamp(2rem, 5vw, 4rem)",
@@ -675,20 +678,20 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
             </p>
           </motion.div>
 
-          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
+          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : cascade ? "clamp(4rem, 7.5vw, 8rem)" : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : cascade ? "clamp(-21rem, -22vw, -16rem)" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : cascade ? 0 : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
             <img
               src={rightImage}
               alt={`${product.name} detail`}
-              style={{ width: isMobile ? "100%" : "180%", height: isMobile
+              style={{ width: isMobile ? "100%" : cascade ? "clamp(200px, 21vw, 320px)" : "180%", height: isMobile
                   ? (tallRight ? "clamp(280px, 68vw, 400px)" : "clamp(220px, 55vw, 320px)")
-                  : (tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
+                  : (cascade ? "clamp(560px, 55vw, 800px)" : tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
               loading="lazy"
             />
           </motion.div>
         </div>
 
         {/* Second large photo — half black, half white bg */}
-        {!isMobile && <div style={{ background: "linear-gradient(to bottom, #0a0a0a 50%, #ffffff 50%)", overflow: "hidden" }}>
+        {!isMobile && <div style={{ background: "linear-gradient(to bottom, #0a0a0a 50%, #ffffff 50%)", overflow: "hidden", ...(cascade ? { position: "relative" as const, zIndex: 3, marginTop: "clamp(-16rem, -17vw, -12rem)" } : {}) }}>
           <motion.div ref={bottomImgRef} style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 6rem) clamp(3rem, 6vh, 4rem)", x: bottomX }}>
             <img
               src={bottomImage}
@@ -697,8 +700,8 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
               style={{
                 width: "100%",
                 display: "block",
-                marginLeft: isMobile ? 0 : "clamp(-15rem, -10vw, 0px)",
-                marginTop: "-3rem",
+                marginLeft: isMobile || cascade ? 0 : "clamp(-15rem, -10vw, 0px)",
+                marginTop: cascade ? 0 : "-3rem",
                 position: "relative",
                 zIndex: 10,
                 height: isMobile ? "clamp(180px, 50vw, 280px)" : "clamp(300px, 35vw, 450px)",
@@ -1145,14 +1148,14 @@ export default function ProductDetailPage() {
           )}
 
         {/* Video antes dos destaques */}
-        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4", "ef7-eye-hybrid"] as const).includes(product.slug as any) && (() => {
+        {/* EF7 fica sem v\u00eddeo at\u00e9 o time entregar o definitivo. */}
+        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4"] as const).includes(product.slug as any) && (() => {
           const videoIds: Record<string, string> = {
             "ef5-v2": "uKXTqqVa-DA",
             "ef2-v1": "Jux50AKrrJw",
             "ef2-v2": "rXeNjRfy7vU",
             "ef2-v3": "YGQdWYZ_d70",
             "ef2-v4": "sk32_ptcBig",
-            "ef7-eye-hybrid": "HCiaGpVNfi8",
           };
           return (
             <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>
