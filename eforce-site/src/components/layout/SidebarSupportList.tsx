@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -18,6 +19,9 @@ const firmwaresData = [
   { name: "EF7 Eye Hybrid", img: "/assets/images/kits/ef5v2-manual.webp", file: "EF7_Hybrid_EForce_AddBank_20260903_V1.42.bin", version: "V1.42" },
 ];
 
+/* Tutorial de atualiza\u00e7\u00e3o do m\u00f3dulo, o mesmo v\u00eddeo da p\u00e1gina de suporte. */
+const UPDATE_VIDEO_YOUTUBE_ID = "igVyyqpZde0";
+
 function getManualHref(slug: string, lang: string | undefined) {
   const suffix = lang === "pt" ? "" : "-en";
   return `/assets/manuais/manual-${slug}${suffix}.pdf`;
@@ -26,6 +30,14 @@ function getManualHref(slug: string, lang: string | undefined) {
 export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
   const { t } = useTranslation();
   const { lang } = useParams();
+  const [videoOpen, setVideoOpen] = useState(false);
+
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setVideoOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [videoOpen]);
 
   return (
     <div className="flex flex-col gap-10">
@@ -106,7 +118,61 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
             </a>
           ))}
         </div>
+
+        {/* Tutorial em v\u00eddeo, abre num pop-up */}
+        <button
+          type="button"
+          onClick={() => setVideoOpen(true)}
+          className="mt-4 flex items-center gap-2 text-left text-sm font-semibold text-brand-orange hover:underline"
+        >
+          <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM10 8.2l6 3.8-6 3.8V8.2z" />
+          </svg>
+          {t('support.updateVideoLink')}
+        </button>
       </div>
+
+      {videoOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={t('support.updateVideoLink')}
+          onClick={() => setVideoOpen(false)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 120,
+            background: "rgba(0,0,0,0.85)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            padding: "clamp(1rem, 4vw, 3rem)",
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setVideoOpen(false)}
+            aria-label="Fechar"
+            style={{
+              position: "absolute", top: "1rem", right: "1.25rem",
+              background: "none", border: "none", cursor: "pointer",
+              color: "#fff", fontSize: "2rem", lineHeight: 1,
+            }}
+          >
+            &times;
+          </button>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{ width: "100%", maxWidth: "960px" }}
+          >
+            <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "8px" }}>
+              <iframe
+                src={`https://www.youtube.com/embed/${UPDATE_VIDEO_YOUTUBE_ID}?autoplay=1`}
+                title={t('support.updateVideoLink')}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Garantia */}
       <div>

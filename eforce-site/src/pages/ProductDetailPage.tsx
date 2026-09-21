@@ -112,7 +112,7 @@ function HeroSection({ product, isMobile }: { product: Product; isMobile: boolea
           zIndex: 0,
         }}
       >
-        {(product.slug.startsWith("ef2-") || product.slug === "ef5-v2") ? (
+        {(product.slug.startsWith("ef2-") || product.slug === "ef5-v2" || product.slug === "ef7-eye-hybrid") ? (
           (isMobile || isLowPowerDevice()) ? (
             /* Fallback estático do fundo de partículas — sem canvas nem blur animado */
             <div
@@ -221,9 +221,9 @@ function HeroSection({ product, isMobile }: { product: Product; isMobile: boolea
           style={{
             position: "relative",
             zIndex: 2,
-            maxWidth: product.slug === "ef2-v4" ? (isMobile ? "min(160vw, 910px)" : "min(65vw, 910px)") : product.slug === "ef2-v2" ? (isMobile ? "min(160vw, 1127px)" : "min(80vw, 1127px)") : product.slug === "ef5-v2" ? (isMobile ? "min(130vw, 1024px)" : "min(73vw, 1024px)") : product.slug === "ef2-v3" ? (isMobile ? "min(160vw, 1260px)" : "min(90vw, 1260px)") : product.slug === "ef2-v1" ? (isMobile ? "min(160vw, 1400px)" : "min(100vw, 1400px)") : "min(80vw, 1100px)",
-            width: product.slug === "ef2-v4" ? (isMobile ? "110%" : "65%") : product.slug === "ef2-v2" ? (isMobile ? "160%" : "80%") : product.slug === "ef5-v2" ? (isMobile ? "90%" : "73%") : product.slug === "ef2-v3" ? (isMobile ? "160%" : "90%") : product.slug === "ef2-v1" ? (isMobile ? "160%" : "100%") : "75%",
-            marginTop: product.slug === "ef2-v4" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(7rem, 11vh, 10rem)") : product.slug === "ef2-v2" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(8rem, 14vh, 12rem)") : product.slug === "ef5-v2" ? (isMobile ? "clamp(10rem, 16vh, 13rem)" : "clamp(6rem, 10vh, 9rem)") : product.slug === "ef2-v1" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(5rem, 9vh, 8rem)") : product.slug === "ef2-v3" ? (isMobile ? "clamp(5rem, 9vh, 8rem)" : "clamp(0rem, 2vh, 1.5rem)") : "clamp(2rem, 5vh, 4rem)",
+            maxWidth: product.slug === "ef2-v4" ? (isMobile ? "min(160vw, 910px)" : "min(65vw, 910px)") : product.slug === "ef2-v2" ? (isMobile ? "min(160vw, 1127px)" : "min(80vw, 1127px)") : product.slug === "ef5-v2" ? (isMobile ? "min(130vw, 1024px)" : "min(73vw, 1024px)") : product.slug === "ef2-v3" ? (isMobile ? "min(160vw, 1260px)" : "min(90vw, 1260px)") : product.slug === "ef2-v1" ? (isMobile ? "min(160vw, 1400px)" : "min(100vw, 1400px)") : product.slug === "ef7-eye-hybrid" ? (isMobile ? "min(117vw, 990px)" : "min(72vw, 990px)") : "min(80vw, 1100px)",
+            width: product.slug === "ef2-v4" ? (isMobile ? "110%" : "65%") : product.slug === "ef2-v2" ? (isMobile ? "160%" : "80%") : product.slug === "ef5-v2" ? (isMobile ? "90%" : "73%") : product.slug === "ef2-v3" ? (isMobile ? "160%" : "90%") : product.slug === "ef2-v1" ? (isMobile ? "160%" : "100%") : product.slug === "ef7-eye-hybrid" ? "67.5%" : "75%",
+            marginTop: product.slug === "ef2-v4" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(7rem, 11vh, 10rem)") : product.slug === "ef2-v2" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(8rem, 14vh, 12rem)") : product.slug === "ef5-v2" ? (isMobile ? "clamp(10rem, 16vh, 13rem)" : "clamp(6rem, 10vh, 9rem)") : product.slug === "ef2-v1" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(5rem, 9vh, 8rem)") : product.slug === "ef2-v3" ? (isMobile ? "clamp(5rem, 9vh, 8rem)" : "clamp(0rem, 2vh, 1.5rem)") : product.slug === "ef7-eye-hybrid" ? (isMobile ? "clamp(9rem, 16vh, 12rem)" : "clamp(5rem, 11vh, 8rem)") : "clamp(2rem, 5vh, 4rem)",
             objectFit: "contain",
             filter: isMobile ? "none" : "drop-shadow(0 30px 60px rgba(0,0,0,0.15))",
           }}
@@ -558,6 +558,8 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
   const loopPoster = product.editorialLoopPoster || "/assets/video/hero-poster.jpg";
   /* Quando definido, o loop aparece pequeno e centralizado, na propor\u00e7\u00e3o dele. */
   const loopWidth = product.editorialLoopMaxWidth;
+  /* Foto vertical do editorial mais alta nesta p\u00e1gina. */
+  const tallRight = product.slug === "ef7-eye-hybrid";
 
   const bottomImgRef = useRef(null);
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
@@ -677,7 +679,9 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
             <img
               src={rightImage}
               alt={`${product.name} detail`}
-              style={{ width: isMobile ? "100%" : "180%", height: isMobile ? "clamp(220px, 55vw, 320px)" : "clamp(500px, 30vw, 650px)", objectFit: "cover", borderRadius: "16px" }}
+              style={{ width: isMobile ? "100%" : "180%", height: isMobile
+                  ? (tallRight ? "clamp(280px, 68vw, 400px)" : "clamp(220px, 55vw, 320px)")
+                  : (tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
               loading="lazy"
             />
           </motion.div>
@@ -1058,7 +1062,7 @@ export default function ProductDetailPage() {
                     style={{ width: "100%", display: "block", objectFit: "contain" }}
                   />
                 ) : (
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(product.finishGallery!.length, 3)}, 1fr)`, gap: "clamp(1rem, 2vw, 2rem)", maxWidth: product.finishGallery!.length < 3 ? "860px" : undefined }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(product.finishGallery!.length, 3)}, 1fr)`, gap: "clamp(1rem, 2vw, 2rem)" }}>
                     {product.finishGallery.map((finish, fi) => {
                       const label = finish.labelKey ? t(finish.labelKey) : finish.label;
                       return (
@@ -1120,7 +1124,7 @@ export default function ProductDetailPage() {
                 <img
                   src={product.fullKitImage || product.galleryImages[0]}
                   alt={`${product.name} full angle`}
-                  style={{ marginLeft: isMobile ? 0 : (product.slug === "ef2-v1" ? "clamp(1rem, 3vw, 3rem)" : product.slug === "ef2-v3" || product.slug === "ef2-v2" ? "clamp(2rem, 5vw, 5rem)" : product.slug === "ef2-v4" ? "clamp(1.5rem, 3vw, 3rem)" : product.slug === "ef5-v2" ? "calc(-1 * clamp(4rem, 12vw, 16rem))" : "auto"), width: isMobile ? "100%" : (product.slug === "ef2-v1" ? "46%" : product.slug === "ef2-v2" ? "55%" : product.slug === "ef2-v3" ? "50%" : product.slug === "ef2-v4" ? "56%" : product.slug === "ef5-v2" ? "61%" : product.slug === "ef7-eye-hybrid" ? "50%" : "68%"), maxWidth: isMobile ? "100%" : (product.slug === "ef2-v1" ? "790px" : product.slug === "ef2-v2" ? "942px" : product.slug === "ef2-v3" ? "858px" : product.slug === "ef2-v4" ? "958px" : product.slug === "ef5-v2" ? "1047px" : product.slug === "ef7-eye-hybrid" ? "720px" : "1163px"), display: "block", objectFit: "contain" }}
+                  style={{ marginLeft: isMobile ? 0 : (product.slug === "ef2-v1" ? "clamp(1rem, 3vw, 3rem)" : product.slug === "ef2-v3" || product.slug === "ef2-v2" ? "clamp(2rem, 5vw, 5rem)" : product.slug === "ef2-v4" ? "clamp(1.5rem, 3vw, 3rem)" : product.slug === "ef5-v2" ? "calc(-1 * clamp(4rem, 12vw, 16rem))" : product.slug === "ef7-eye-hybrid" ? 0 : "auto"), width: isMobile ? "100%" : (product.slug === "ef2-v1" ? "46%" : product.slug === "ef2-v2" ? "55%" : product.slug === "ef2-v3" ? "50%" : product.slug === "ef2-v4" ? "56%" : product.slug === "ef5-v2" ? "61%" : product.slug === "ef7-eye-hybrid" ? "55%" : "68%"), maxWidth: isMobile ? "100%" : (product.slug === "ef2-v1" ? "790px" : product.slug === "ef2-v2" ? "942px" : product.slug === "ef2-v3" ? "858px" : product.slug === "ef2-v4" ? "958px" : product.slug === "ef5-v2" ? "1047px" : product.slug === "ef7-eye-hybrid" ? "760px" : "1163px"), display: "block", objectFit: "contain" }}
                 />
               </AnimatedSection>
             ) : (
