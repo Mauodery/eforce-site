@@ -1152,9 +1152,7 @@ export default function ProductDetailPage() {
             "ef2-v2": "rXeNjRfy7vU",
             "ef2-v3": "YGQdWYZ_d70",
             "ef2-v4": "sk32_ptcBig",
-            // Por ora o tutorial de atualiza\u00e7\u00e3o do m\u00f3dulo F50, o mesmo da
-            // p\u00e1gina de suporte. Troca quando o v\u00eddeo da EF7 ficar pronto.
-            "ef7-eye-hybrid": "igVyyqpZde0",
+            "ef7-eye-hybrid": "HCiaGpVNfi8",
           };
           return (
             <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>
