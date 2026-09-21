@@ -554,7 +554,7 @@ export const products: Product[] = [
     editorialBody: "S\u00e3o mais de 03 d\u00e9cadas de experi\u00eancia construindo baterias ac\u00fasticas aliadas \u00e0 um time de tecnologia de ponta para entregar a melhor experi\u00eancia h\u00edbrida do mercado.",
     editorialLoopVideo: "/assets/video/ef7-editorial-loop.mp4",
     editorialLoopPoster: "/assets/video/ef7-editorial-loop-poster.jpg",
-    editorialLoopMaxWidth: "clamp(240px, 32vw, 460px)",
+    editorialLoopMaxWidth: "clamp(360px, 48vw, 690px)",
     editorialVerticalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-vertical.webp",
     editorialHorizontalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-horizontal.webp",
     galleryImages: [
