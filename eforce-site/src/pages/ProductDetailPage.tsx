@@ -1145,15 +1145,16 @@ export default function ProductDetailPage() {
           )}
 
         {/* Video antes dos destaques */}
-        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4"] as const).includes(product.slug as any) && (() => {
+        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4", "ef7-eye-hybrid"] as const).includes(product.slug as any) && (() => {
           const videoIds: Record<string, string> = {
             "ef5-v2": "uKXTqqVa-DA",
             "ef2-v1": "Jux50AKrrJw",
             "ef2-v2": "rXeNjRfy7vU",
             "ef2-v3": "YGQdWYZ_d70",
             "ef2-v4": "sk32_ptcBig",
-            // A EF7 entra aqui quando o v\u00eddeo dela ficar pronto; at\u00e9 l\u00e1 a se\u00e7\u00e3o
-            // n\u00e3o aparece, para n\u00e3o exibir o v\u00eddeo de outro modelo.
+            // Por ora o tutorial de atualiza\u00e7\u00e3o do m\u00f3dulo F50, o mesmo da
+            // p\u00e1gina de suporte. Troca quando o v\u00eddeo da EF7 ficar pronto.
+            "ef7-eye-hybrid": "igVyyqpZde0",
           };
           return (
             <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>
