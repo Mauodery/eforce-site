@@ -1148,14 +1148,14 @@ export default function ProductDetailPage() {
           )}
 
         {/* Video antes dos destaques */}
-        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4", "ef7-eye-hybrid"] as const).includes(product.slug as any) && (() => {
+        {/* EF7 fica sem v\u00eddeo at\u00e9 o time entregar o definitivo. */}
+        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4"] as const).includes(product.slug as any) && (() => {
           const videoIds: Record<string, string> = {
             "ef5-v2": "uKXTqqVa-DA",
             "ef2-v1": "Jux50AKrrJw",
             "ef2-v2": "rXeNjRfy7vU",
             "ef2-v3": "YGQdWYZ_d70",
             "ef2-v4": "sk32_ptcBig",
-            "ef7-eye-hybrid": "HCiaGpVNfi8",
           };
           return (
             <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>

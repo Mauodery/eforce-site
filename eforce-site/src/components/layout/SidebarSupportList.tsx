@@ -20,7 +20,7 @@ const firmwaresData = [
 ];
 
 /* Tutorial de atualiza\u00e7\u00e3o do m\u00f3dulo, o mesmo v\u00eddeo da p\u00e1gina de suporte. */
-const UPDATE_VIDEO_YOUTUBE_ID = "igVyyqpZde0";
+const UPDATE_VIDEO_YOUTUBE_ID = "HCiaGpVNfi8";
 
 function getManualHref(slug: string, lang: string | undefined) {
   const suffix = lang === "pt" ? "" : "-en";
