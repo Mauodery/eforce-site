@@ -112,7 +112,7 @@ function HeroSection({ product, isMobile }: { product: Product; isMobile: boolea
           zIndex: 0,
         }}
       >
-        {(product.slug.startsWith("ef2-") || product.slug === "ef5-v2") ? (
+        {(product.slug.startsWith("ef2-") || product.slug === "ef5-v2" || product.slug === "ef7-eye-hybrid") ? (
           (isMobile || isLowPowerDevice()) ? (
             /* Fallback estático do fundo de partículas — sem canvas nem blur animado */
             <div
@@ -1058,7 +1058,7 @@ export default function ProductDetailPage() {
                     style={{ width: "100%", display: "block", objectFit: "contain" }}
                   />
                 ) : (
-                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(product.finishGallery!.length, 3)}, 1fr)`, gap: "clamp(1rem, 2vw, 2rem)", maxWidth: product.finishGallery!.length < 3 ? "860px" : undefined }}>
+                  <div style={{ display: "grid", gridTemplateColumns: isMobile ? "1fr" : `repeat(${Math.min(product.finishGallery!.length, 3)}, 1fr)`, gap: "clamp(1rem, 2vw, 2rem)" }}>
                     {product.finishGallery.map((finish, fi) => {
                       const label = finish.labelKey ? t(finish.labelKey) : finish.label;
                       return (
@@ -1120,7 +1120,7 @@ export default function ProductDetailPage() {
                 <img
                   src={product.fullKitImage || product.galleryImages[0]}
                   alt={`${product.name} full angle`}
-                  style={{ marginLeft: isMobile ? 0 : (product.slug === "ef2-v1" ? "clamp(1rem, 3vw, 3rem)" : product.slug === "ef2-v3" || product.slug === "ef2-v2" ? "clamp(2rem, 5vw, 5rem)" : product.slug === "ef2-v4" ? "clamp(1.5rem, 3vw, 3rem)" : product.slug === "ef5-v2" ? "calc(-1 * clamp(4rem, 12vw, 16rem))" : "auto"), width: isMobile ? "100%" : (product.slug === "ef2-v1" ? "46%" : product.slug === "ef2-v2" ? "55%" : product.slug === "ef2-v3" ? "50%" : product.slug === "ef2-v4" ? "56%" : product.slug === "ef5-v2" ? "61%" : product.slug === "ef7-eye-hybrid" ? "50%" : "68%"), maxWidth: isMobile ? "100%" : (product.slug === "ef2-v1" ? "790px" : product.slug === "ef2-v2" ? "942px" : product.slug === "ef2-v3" ? "858px" : product.slug === "ef2-v4" ? "958px" : product.slug === "ef5-v2" ? "1047px" : product.slug === "ef7-eye-hybrid" ? "720px" : "1163px"), display: "block", objectFit: "contain" }}
+                  style={{ marginLeft: isMobile ? 0 : (product.slug === "ef2-v1" ? "clamp(1rem, 3vw, 3rem)" : product.slug === "ef2-v3" || product.slug === "ef2-v2" ? "clamp(2rem, 5vw, 5rem)" : product.slug === "ef2-v4" ? "clamp(1.5rem, 3vw, 3rem)" : product.slug === "ef5-v2" ? "calc(-1 * clamp(4rem, 12vw, 16rem))" : product.slug === "ef7-eye-hybrid" ? 0 : "auto"), width: isMobile ? "100%" : (product.slug === "ef2-v1" ? "46%" : product.slug === "ef2-v2" ? "55%" : product.slug === "ef2-v3" ? "50%" : product.slug === "ef2-v4" ? "56%" : product.slug === "ef5-v2" ? "61%" : product.slug === "ef7-eye-hybrid" ? "55%" : "68%"), maxWidth: isMobile ? "100%" : (product.slug === "ef2-v1" ? "790px" : product.slug === "ef2-v2" ? "942px" : product.slug === "ef2-v3" ? "858px" : product.slug === "ef2-v4" ? "958px" : product.slug === "ef5-v2" ? "1047px" : product.slug === "ef7-eye-hybrid" ? "760px" : "1163px"), display: "block", objectFit: "contain" }}
                 />
               </AnimatedSection>
             ) : (
