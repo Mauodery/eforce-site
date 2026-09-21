@@ -1047,7 +1047,8 @@ export default function ProductDetailPage() {
                   src={product.introImage}
                   alt={product.name}
                   loading="lazy"
-                  style={{ width: "100%", maxWidth: "1100px", display: "block", objectFit: "contain" }}
+                  /* Teto de altura para a foto caber na tela sem precisar rolar. */
+                  style={{ width: "100%", maxWidth: "1100px", maxHeight: "min(72vh, 760px)", height: "auto", display: "block", objectFit: "contain" }}
                 />
               </AnimatedSection>
             </section>
