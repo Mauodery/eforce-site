@@ -225,8 +225,7 @@ function HeroSection({ product, isMobile }: { product: Product; isMobile: boolea
             width: product.slug === "ef2-v4" ? (isMobile ? "110%" : "65%") : product.slug === "ef2-v2" ? (isMobile ? "160%" : "80%") : product.slug === "ef5-v2" ? (isMobile ? "90%" : "73%") : product.slug === "ef2-v3" ? (isMobile ? "160%" : "90%") : product.slug === "ef2-v1" ? (isMobile ? "160%" : "100%") : product.slug === "ef7-eye-hybrid" ? "67.5%" : "75%",
             marginTop: product.slug === "ef2-v4" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(7rem, 11vh, 10rem)") : product.slug === "ef2-v2" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(8rem, 14vh, 12rem)") : product.slug === "ef5-v2" ? (isMobile ? "clamp(10rem, 16vh, 13rem)" : "clamp(6rem, 10vh, 9rem)") : product.slug === "ef2-v1" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(5rem, 9vh, 8rem)") : product.slug === "ef2-v3" ? (isMobile ? "clamp(5rem, 9vh, 8rem)" : "clamp(0rem, 2vh, 1.5rem)") : product.slug === "ef7-eye-hybrid" ? (isMobile ? "clamp(9rem, 16vh, 12rem)" : "clamp(5rem, 11vh, 8rem)") : "clamp(2rem, 5vh, 4rem)",
             objectFit: "contain",
-            /* A foto da EF7 j\u00e1 vem sem sombra; o drop-shadow daqui reintroduzia uma. */
-            filter: isMobile || product.slug === "ef7-eye-hybrid" ? "none" : "drop-shadow(0 30px 60px rgba(0,0,0,0.15))",
+            /* Sem drop-shadow: as fotos de hero j\u00e1 v\u00eam recortadas e sem sombra. */
           }}
           fetchPriority="high"
         />
