@@ -225,7 +225,8 @@ function HeroSection({ product, isMobile }: { product: Product; isMobile: boolea
             width: product.slug === "ef2-v4" ? (isMobile ? "110%" : "65%") : product.slug === "ef2-v2" ? (isMobile ? "160%" : "80%") : product.slug === "ef5-v2" ? (isMobile ? "90%" : "73%") : product.slug === "ef2-v3" ? (isMobile ? "160%" : "90%") : product.slug === "ef2-v1" ? (isMobile ? "160%" : "100%") : product.slug === "ef7-eye-hybrid" ? "67.5%" : "75%",
             marginTop: product.slug === "ef2-v4" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(7rem, 11vh, 10rem)") : product.slug === "ef2-v2" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(8rem, 14vh, 12rem)") : product.slug === "ef5-v2" ? (isMobile ? "clamp(10rem, 16vh, 13rem)" : "clamp(6rem, 10vh, 9rem)") : product.slug === "ef2-v1" ? (isMobile ? "clamp(8rem, 15vh, 11rem)" : "clamp(5rem, 9vh, 8rem)") : product.slug === "ef2-v3" ? (isMobile ? "clamp(5rem, 9vh, 8rem)" : "clamp(0rem, 2vh, 1.5rem)") : product.slug === "ef7-eye-hybrid" ? (isMobile ? "clamp(9rem, 16vh, 12rem)" : "clamp(5rem, 11vh, 8rem)") : "clamp(2rem, 5vh, 4rem)",
             objectFit: "contain",
-            filter: isMobile ? "none" : "drop-shadow(0 30px 60px rgba(0,0,0,0.15))",
+            /* A foto da EF7 j\u00e1 vem sem sombra; o drop-shadow daqui reintroduzia uma. */
+            filter: isMobile || product.slug === "ef7-eye-hybrid" ? "none" : "drop-shadow(0 30px 60px rgba(0,0,0,0.15))",
           }}
           fetchPriority="high"
         />
@@ -566,7 +567,9 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
 
   const bottomImgRef = useRef(null);
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
-  const bottomX = useTransform(bottomProgress, [0, 1], isMobile || cascade ? [0, 0] : [-80, 80]);
+  /* No EF7 a foto come\u00e7a alinhada \u00e0 grade, ent\u00e3o o passeio tem que caber no padding
+     do wrapper (6vw) para os cantos n\u00e3o serem cortados pelo overflow hidden. */
+  const bottomX = useTransform(bottomProgress, [0, 1], isMobile ? [0, 0] : cascade ? [-32, 32] : [-80, 80]);
 
   return (
     <section style={{ background: "#fff", position: "relative" }}>
@@ -678,7 +681,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
             </p>
           </motion.div>
 
-          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : cascade ? "clamp(4rem, 7.5vw, 8rem)" : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : cascade ? "clamp(-21rem, -22vw, -16rem)" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : cascade ? 0 : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
+          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : cascade ? "clamp(4rem, 7.5vw, 8rem)" : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : cascade ? "clamp(-15rem, -16vw, -11rem)" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : cascade ? 0 : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
             <img
               src={rightImage}
               alt={`${product.name} detail`}
