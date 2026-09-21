@@ -546,7 +546,7 @@ export const products: Product[] = [
       { image: "/assets/images/kits/ef7eye/ef7eye-dest-construcao.webp", title: "Constru\u00e7\u00e3o pensada nos m\u00ednimos detalhes.", description: "Para a uni\u00e3o dos dois mundos.", objectFit: "cover" as const, cardWidth: "clamp(230px, 26vw, 350px)" },
       { image: "/assets/images/kits/ef7eye/ef7eye-dest-pratos.webp", title: "Pratos Full Cover de alta sensibilidade.", description: "", objectFit: "cover" as const, cardWidth: "clamp(280px, 36vw, 485px)" },
       { image: "/assets/images/kits/ef7eye/ef7eye-dest-cascos.webp", title: "Cascos em Maple Americano.", description: "E a assinatura Odery em todas as pe\u00e7as.", objectFit: "cover" as const, cardWidth: "clamp(400px, 62vw, 1100px)" },
-      { image: "/assets/images/kits/ef7eye/ef7eye-dest-meduza-h.webp", title: "Meduza para conex\u00e3o de todos os tambores.", description: "Possibilita expans\u00e3o.", objectFit: "cover" as const, cardWidth: "clamp(400px, 62vw, 1100px)" },
+      { image: "/assets/images/kits/ef7eye/ef7eye-dest-meduza-h.webp", title: "Meduza para conex\u00e3o de todos os tambores e pratos.", description: "Possibilita expans\u00e3o.", objectFit: "cover" as const, cardWidth: "clamp(400px, 62vw, 1100px)" },
       { image: "/assets/images/kits/ef7eye/ef7eye-dest-meduza-v.webp", title: "Meduza conectada de forma r\u00e1pida e pr\u00e1tica.", description: "", objectFit: "cover" as const, cardWidth: "clamp(230px, 26vw, 350px)" },
       { image: "/assets/images/kits/ef7eye/ef7eye-dest-acabamentos.webp", title: "Acabamentos do mais alto n\u00edvel do mercado.", description: "", objectFit: "cover" as const, cardWidth: "clamp(400px, 62vw, 1100px)" },
     ],

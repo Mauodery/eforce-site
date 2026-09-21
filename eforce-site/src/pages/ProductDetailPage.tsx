@@ -558,6 +558,8 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
   const loopPoster = product.editorialLoopPoster || "/assets/video/hero-poster.jpg";
   /* Quando definido, o loop aparece pequeno e centralizado, na propor\u00e7\u00e3o dele. */
   const loopWidth = product.editorialLoopMaxWidth;
+  /* Foto vertical do editorial mais alta nesta p\u00e1gina. */
+  const tallRight = product.slug === "ef7-eye-hybrid";
 
   const bottomImgRef = useRef(null);
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
@@ -677,7 +679,9 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
             <img
               src={rightImage}
               alt={`${product.name} detail`}
-              style={{ width: isMobile ? "100%" : "180%", height: isMobile ? "clamp(220px, 55vw, 320px)" : "clamp(500px, 30vw, 650px)", objectFit: "cover", borderRadius: "16px" }}
+              style={{ width: isMobile ? "100%" : "180%", height: isMobile
+                  ? (tallRight ? "clamp(280px, 68vw, 400px)" : "clamp(220px, 55vw, 320px)")
+                  : (tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
               loading="lazy"
             />
           </motion.div>
