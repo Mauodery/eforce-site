@@ -958,7 +958,7 @@ export default function ProductDetailPage() {
 
   /* P\u00e1ginas prontas, mas ainda n\u00e3o publicadas.
      Abrir com ?preview=1 mostra a p\u00e1gina completa para revis\u00e3o interna. */
-  const COMING_SOON_IDS = ["ef7eye"];
+  const COMING_SOON_IDS: string[] = [];
   if (COMING_SOON_IDS.includes(product.id) && !isPreview) {
     return (
       <>
@@ -1141,15 +1141,15 @@ export default function ProductDetailPage() {
           )}
 
         {/* Video antes dos destaques */}
-        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4", "ef7-eye-hybrid"] as const).includes(product.slug as any) && (() => {
+        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4"] as const).includes(product.slug as any) && (() => {
           const videoIds: Record<string, string> = {
             "ef5-v2": "uKXTqqVa-DA",
             "ef2-v1": "Jux50AKrrJw",
             "ef2-v2": "rXeNjRfy7vU",
             "ef2-v3": "YGQdWYZ_d70",
             "ef2-v4": "sk32_ptcBig",
-            // Placeholder: o Mauricio ainda vai definir o v\u00eddeo da EF7.
-            "ef7-eye-hybrid": "uKXTqqVa-DA",
+            // A EF7 entra aqui quando o v\u00eddeo dela ficar pronto; at\u00e9 l\u00e1 a se\u00e7\u00e3o
+            // n\u00e3o aparece, para n\u00e3o exibir o v\u00eddeo de outro modelo.
           };
           return (
             <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>
