@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { usePageTransition } from '@/context/TransitionContext';
 import { products } from '@/data/products';
 
-const COMING_SOON = ["ef7eye"];
+const COMING_SOON: string[] = [];
 
 export function ModelsCTA() {
   const { t } = useTranslation();
@@ -11,9 +11,7 @@ export function ModelsCTA() {
   const currentLang = lang ?? 'pt';
   const { navigateWithCurtain } = usePageTransition();
 
-  const visibleProducts = products.filter(
-    (p) => !["ef7-eye-hybrid"].includes(p.slug)
-  );
+  const visibleProducts = products;
 
   return (
     <section style={{ background: "#0a0a0a", padding: "clamp(4rem, 8vh, 7rem) clamp(1.5rem, 6vw, 5rem)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>

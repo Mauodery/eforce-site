@@ -7,7 +7,7 @@ interface SidebarModelListProps {
   onNavigate: () => void;
 }
 
-const COMING_SOON_IDS = ["ef7eye"];
+const COMING_SOON_IDS: string[] = [];
 
 export function SidebarModelList({ onNavigate }: SidebarModelListProps) {
   const { lang } = useParams();

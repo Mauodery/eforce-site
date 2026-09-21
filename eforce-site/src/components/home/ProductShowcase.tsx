@@ -6,7 +6,7 @@ import { products } from "@/data/products";
 import { usePageTransition } from "@/context/TransitionContext";
 import { getTranslatedProduct } from "@/hooks/useTranslatedProduct";
 
-const COMING_SOON_IDS = ["ef7v1", "ef7eye"];
+const COMING_SOON_IDS = ["ef7v1"];
 
 export default function ProductShowcase() {
   const { lang } = useParams();
