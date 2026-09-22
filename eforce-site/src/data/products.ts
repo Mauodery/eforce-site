@@ -527,6 +527,7 @@ export const products: Product[] = [
       "A e-Force EF7 \u00e9 uma bateria Odery Eyedentity 100% Maple americano sendo o suprassumo da linha E-Force pois \u00e9 uma verdadeira bateria ac\u00fastica top de linha combinada ao poderoso m\u00f3dulo F50 que entrega recursos dentre os mais profissionais do mercado. Este kit pode ser tocado tanto de forma eletr\u00f4nica como de forma ac\u00fastica (necessita a troca das peles). E EF7 Odery Eyedentity entrega um visual \u00fanico com presen\u00e7a e performance de extrema raridade neste mercado de eletr\u00f4nicas.",
       "Com pratos maiores e estilo Full Cover, interface mais avan\u00e7ada e visual mais completo, a EF7 atende a mais alta gama do mercado de baterias eletr\u00f4nicas adicionando uma experi\u00eancia \u00fanica.",
     ],
+    introImage: "/assets/images/kits/ef7eye/ef7eye-kit-apos-texto.webp",
     finishes: [
       { id: "tbc", name: "TBC - The Blue Cave", color: "#1a7a8c", image: "/assets/images/kits/ef7eye/ef7eye-tbc.webp" },
       { id: "ssb", name: "SSB - Sunset Burst", color: "#c4451f", image: "/assets/images/kits/ef7eye/ef7eye-ssb.webp" },
