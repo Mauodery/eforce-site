@@ -266,7 +266,7 @@ function KeySpecsSection({ product, isMobile }: { product: Product; isMobile: bo
       style={{
         background: "#fff",
         /* Respiro entre a bateria do hero e a desta se\u00e7\u00e3o. */
-        padding: "clamp(4.5rem, 8.5vh, 7rem) clamp(1.5rem, 6vw, 6rem)",
+        padding: "clamp(8rem, 15vh, 12rem) clamp(1.5rem, 6vw, 6rem)",
       }}
     >
       <AnimatedSection>
@@ -687,8 +687,11 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
               alt={`${product.name} detail`}
               style={{ width: isMobile ? "100%" : cascade ? "clamp(240px, 25vw, 380px)" : "180%", maxWidth: cascade && !isMobile ? "none" : undefined, height: isMobile
                   ? (tallRight ? "clamp(280px, 68vw, 400px)" : "clamp(220px, 55vw, 320px)")
-                  /* No EF7 a altura segue o arquivo: o cover cortava as laterais e sobrava s\u00f3 pele. */
-                  : (cascade ? "auto" : tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
+                  : (cascade ? undefined : tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"),
+                  /* Retrato 1:2. Mais vertical que o arquivo (9:16), com corte lateral de s\u00f3 11%,
+                     longe dos 32% do enquadramento antigo que deixava s\u00f3 pele \u00e0 vista. */
+                  ...(cascade && !isMobile ? { aspectRatio: "1 / 2" } : {}),
+                  objectFit: "cover", borderRadius: "16px" }}
               loading="lazy"
             />
           </motion.div>
