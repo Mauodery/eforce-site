@@ -503,7 +503,7 @@ export const products: Product[] = [
       "Onde a forma ac\u00fastica e a capacidade eletr\u00f4nica se unem sem concess\u00f5es. A experi\u00eancia E-Force definitiva.",
     module: "F50",
     badge: "home.flagship",
-    heroImage: "/assets/images/kits/ef7eye/ef7eye-teal-nobg.webp",
+    heroImage: "/assets/images/kits/ef7eye/ef7eye-hero-new.webp",
     menuImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
     showcaseImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
     specsImage: "/assets/images/kits/ef7eye/ef7eye-ssb-nobg.webp",
