@@ -265,7 +265,8 @@ function KeySpecsSection({ product, isMobile }: { product: Product; isMobile: bo
     <section
       style={{
         background: "#fff",
-        padding: "clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem)",
+        /* Respiro entre a bateria do hero e a desta se\u00e7\u00e3o. */
+        padding: "clamp(4.5rem, 8.5vh, 7rem) clamp(1.5rem, 6vw, 6rem)",
       }}
     >
       <AnimatedSection>
@@ -684,9 +685,10 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
             <img
               src={rightImage}
               alt={`${product.name} detail`}
-              style={{ width: isMobile ? "100%" : cascade ? "clamp(200px, 21vw, 320px)" : "180%", maxWidth: cascade && !isMobile ? "none" : undefined, height: isMobile
+              style={{ width: isMobile ? "100%" : cascade ? "clamp(240px, 25vw, 380px)" : "180%", maxWidth: cascade && !isMobile ? "none" : undefined, height: isMobile
                   ? (tallRight ? "clamp(280px, 68vw, 400px)" : "clamp(220px, 55vw, 320px)")
-                  : (cascade ? "clamp(560px, 55vw, 800px)" : tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
+                  /* No EF7 a altura segue o arquivo: o cover cortava as laterais e sobrava s\u00f3 pele. */
+                  : (cascade ? "auto" : tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
               loading="lazy"
             />
           </motion.div>
@@ -1048,7 +1050,7 @@ export default function ProductDetailPage() {
                   alt={product.name}
                   loading="lazy"
                   /* Teto de altura para a foto caber na tela sem precisar rolar. */
-                  style={{ width: "100%", maxWidth: "1100px", maxHeight: "min(72vh, 760px)", height: "auto", display: "block", objectFit: "contain" }}
+                  style={{ width: "100%", maxWidth: "1100px", maxHeight: "min(88vh, 860px)", height: "auto", display: "block", objectFit: "contain" }}
                 />
               </AnimatedSection>
             </section>
