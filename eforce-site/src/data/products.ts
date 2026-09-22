@@ -555,7 +555,7 @@ export const products: Product[] = [
     editorialLoopVideo: "/assets/video/ef7-editorial-loop.mp4",
     editorialLoopPoster: "/assets/video/ef7-editorial-loop-poster.jpg",
     /* Faixa inteira, como nas outras p\u00e1ginas, mas na propor\u00e7\u00e3o do arquivo. */
-    editorialLoopMaxWidth: "100%",
+    editorialLoopMaxWidth: "88%",
     editorialVerticalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-vertical.webp",
     editorialHorizontalImage: "/assets/images/kits/ef7eye/ef7eye-editorial-horizontal.webp",
     galleryImages: [

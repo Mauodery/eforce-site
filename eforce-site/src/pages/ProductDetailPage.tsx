@@ -265,7 +265,8 @@ function KeySpecsSection({ product, isMobile }: { product: Product; isMobile: bo
     <section
       style={{
         background: "#fff",
-        padding: "clamp(3rem, 6vh, 5rem) clamp(1.5rem, 6vw, 6rem)",
+        /* Respiro entre a bateria do hero e a desta se\u00e7\u00e3o. */
+        padding: "clamp(8rem, 15vh, 12rem) clamp(1.5rem, 6vw, 6rem)",
       }}
     >
       <AnimatedSection>
@@ -568,7 +569,7 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
   const { scrollYProgress: bottomProgress } = useScroll({ target: bottomImgRef, offset: ["start end", "end start"] });
   /* No EF7 a foto come\u00e7a alinhada \u00e0 grade, ent\u00e3o o passeio tem que caber no padding
      do wrapper (6vw) para os cantos n\u00e3o serem cortados pelo overflow hidden. */
-  const bottomX = useTransform(bottomProgress, [0, 1], isMobile ? [0, 0] : cascade ? [-32, 32] : [-80, 80]);
+  const bottomX = useTransform(bottomProgress, [0, 1], isMobile ? [0, 0] : [-80, 80]);
 
   return (
     <section style={{ background: "#fff", position: "relative" }}>
@@ -680,13 +681,17 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
             </p>
           </motion.div>
 
-          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : cascade ? "clamp(4rem, 7.5vw, 8rem)" : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : cascade ? "clamp(-11rem, -12vw, -8rem)" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : cascade ? 0 : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
+          <motion.div ref={rightImgRef} style={{ borderRadius: "16px", position: "relative", zIndex: 2, marginLeft: isMobile ? 0 : cascade ? "clamp(12rem, 17vw, 17rem)" : "clamp(0%, 10vw, 25%)", marginTop: isMobile ? "1.5rem" : cascade ? "clamp(-10rem, -10.5vw, -7rem)" : "clamp(-8rem, -10vw, -12rem)", marginRight: isMobile ? 0 : cascade ? "calc(-1 * clamp(1.5rem, 6vw, 6rem))" : "clamp(-6rem, -10vw, -14rem)", y: rightY }}>
             <img
               src={rightImage}
               alt={`${product.name} detail`}
-              style={{ width: isMobile ? "100%" : cascade ? "clamp(200px, 21vw, 320px)" : "180%", height: isMobile
+              style={{ width: isMobile ? "100%" : cascade ? "clamp(240px, 25vw, 380px)" : "180%", maxWidth: cascade && !isMobile ? "none" : undefined, height: isMobile
                   ? (tallRight ? "clamp(280px, 68vw, 400px)" : "clamp(220px, 55vw, 320px)")
-                  : (cascade ? "clamp(560px, 55vw, 800px)" : tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"), objectFit: "cover", borderRadius: "16px" }}
+                  : (cascade ? undefined : tallRight ? "clamp(620px, 42vw, 820px)" : "clamp(500px, 30vw, 650px)"),
+                  /* Retrato 1:2. Mais vertical que o arquivo (9:16), com corte lateral de s\u00f3 11%,
+                     longe dos 32% do enquadramento antigo que deixava s\u00f3 pele \u00e0 vista. */
+                  ...(cascade && !isMobile ? { aspectRatio: "1 / 2" } : {}),
+                  objectFit: "cover", borderRadius: "16px" }}
               loading="lazy"
             />
           </motion.div>
@@ -700,9 +705,9 @@ function EditorialSection({ product, isMobile }: { product: Product; isMobile: b
               alt={`${product.name} lifestyle`}
               loading="lazy"
               style={{
-                width: "100%",
+                width: cascade && !isMobile ? "88%" : "100%",
                 display: "block",
-                marginLeft: isMobile || cascade ? 0 : "clamp(-15rem, -10vw, 0px)",
+                marginLeft: isMobile ? 0 : "clamp(-15rem, -8.5vw, 0px)",
                 marginTop: cascade ? 0 : "-3rem",
                 position: "relative",
                 zIndex: 10,
@@ -1048,7 +1053,7 @@ export default function ProductDetailPage() {
                   alt={product.name}
                   loading="lazy"
                   /* Teto de altura para a foto caber na tela sem precisar rolar. */
-                  style={{ width: "100%", maxWidth: "1100px", maxHeight: "min(72vh, 760px)", height: "auto", display: "block", objectFit: "contain" }}
+                  style={{ width: "100%", maxWidth: "1100px", maxHeight: "min(88vh, 860px)", height: "auto", display: "block", objectFit: "contain" }}
                 />
               </AnimatedSection>
             </section>
