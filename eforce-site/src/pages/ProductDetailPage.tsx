@@ -80,6 +80,15 @@ const defaultHighlights = [
   { title: "Acabamento.", description: "Duis aute irure dolor in reprehenderit in voluptate velit." },
 ];
 
+const productVideoIds: Record<string, string> = {
+  "ef5-v2": "uKXTqqVa-DA",
+  "ef2-v1": "Jux50AKrrJw",
+  "ef2-v2": "rXeNjRfy7vU",
+  "ef2-v3": "YGQdWYZ_d70",
+  "ef2-v4": "sk32_ptcBig",
+  "ef7-eye-hybrid": "-1qXzdisIzs",
+};
+
 /* ═══════════════════════════════════════════════════════
    SECTION 1 — HERO (Porsche-style warm gray bg)
    ═══════════════════════════════════════════════════════ */
@@ -1156,31 +1165,21 @@ export default function ProductDetailPage() {
           )}
 
         {/* Video antes dos destaques */}
-        {/* EF7 fica sem v\u00eddeo at\u00e9 o time entregar o definitivo. */}
-        {(["ef5-v2", "ef2-v1", "ef2-v2", "ef2-v3", "ef2-v4"] as const).includes(product.slug as any) && (() => {
-          const videoIds: Record<string, string> = {
-            "ef5-v2": "uKXTqqVa-DA",
-            "ef2-v1": "Jux50AKrrJw",
-            "ef2-v2": "rXeNjRfy7vU",
-            "ef2-v3": "YGQdWYZ_d70",
-            "ef2-v4": "sk32_ptcBig",
-          };
-          return (
-            <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>
-              <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 6rem)" }}>
-                <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "4px" }}>
-                  <iframe
-                    src={`https://www.youtube.com/embed/${videoIds[product.slug]}`}
-                    title={product.name}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-                  />
-                </div>
+        {productVideoIds[product.slug] && (
+          <section style={{ background: "#000", padding: "clamp(2rem, 5vh, 4rem) 0" }}>
+            <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(1.5rem, 6vw, 6rem)" }}>
+              <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "4px" }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${productVideoIds[product.slug]}`}
+                  title={product.name}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                />
               </div>
-            </section>
-          );
-        })()}
+            </div>
+          </section>
+        )}
 
         {/* Section 6: Highlights carousel */}
         <HighlightsCarousel product={product} isMobile={isMobile} />
