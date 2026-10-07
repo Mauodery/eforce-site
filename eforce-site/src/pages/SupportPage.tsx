@@ -29,12 +29,6 @@ const F50_AUX_UPDATE = {
   videoYoutubeId: "",
 };
 
-// Vídeo "como atualizar o módulo F50". Aceita um arquivo local
-// (/assets/video/...) ou um ID do YouTube. Com os dois vazios a
-// seção do vídeo simplesmente não é renderizada.
-const F50_UPDATE_VIDEO_SRC = "";
-const F50_UPDATE_VIDEO_YOUTUBE_ID = "HCiaGpVNfi8";
-
 export default function SupportPage() {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
@@ -189,19 +183,6 @@ export default function SupportPage() {
             ))}
           </div>
 
-          {(F50_UPDATE_VIDEO_SRC || F50_UPDATE_VIDEO_YOUTUBE_ID) && (
-            <div style={{ marginTop: "clamp(2.5rem, 5vh, 4rem)" }}>
-              <h3 style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em", margin: "0 0 clamp(1rem, 2vh, 1.5rem)" }}>
-                {t('support.updateVideoTitle')}
-              </h3>
-              <TutorialVideo
-                title={t('support.updateVideoTitle')}
-                ctaLabel={t('support.updateVideoCta')}
-                src={F50_UPDATE_VIDEO_SRC}
-                youtubeId={F50_UPDATE_VIDEO_YOUTUBE_ID}
-              />
-            </div>
-          )}
         </div>
       </section>
 
