@@ -20,6 +20,15 @@ const FIRMWARES = [
   },
 ];
 
+// Atualização do controle de volume da saída AUX (módulo F50). É um
+// pacote .zip com os .bin e o driver RPC, e vem com o tutorial próprio.
+const F50_AUX_UPDATE = {
+  file: "F50_Volume_Control_AUX_20261006.zip",
+  videoSrc: "/assets/video/f50-volume-aux-tutorial.mp4",
+  videoPoster: "/assets/video/f50-volume-aux-tutorial-poster.jpg",
+  videoYoutubeId: "",
+};
+
 // Vídeo "como atualizar o módulo F50". Aceita um arquivo local
 // (/assets/video/...) ou um ID do YouTube. Com os dois vazios a
 // seção do vídeo simplesmente não é renderizada.
@@ -30,7 +39,6 @@ export default function SupportPage() {
   const { t } = useTranslation();
   const { lang } = useParams<{ lang: string }>();
   const currentLang = lang ?? 'en';
-  const [videoPlaying, setVideoPlaying] = useState(false);
 
   return (
     <>
@@ -112,6 +120,42 @@ export default function SupportPage() {
             {t('support.updatesHeadline')}
           </h2>
 
+          {/* F50 — controle de volume AUX */}
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "clamp(1.5rem, 4vh, 2.5rem) 0", marginBottom: "clamp(2.5rem, 5vh, 4rem)" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: "clamp(1.25rem, 3vw, 3rem)" }}>
+              <div style={{ flex: "1 1 320px", minWidth: 0 }}>
+                <p style={{ margin: 0, fontSize: "clamp(1rem, 1.5vw, 1.25rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>
+                  {t('support.f50AuxTitle')}
+                </p>
+                <p style={{ margin: "0.6rem 0 0", maxWidth: "640px", fontSize: "0.95rem", lineHeight: 1.6, color: "rgba(255,255,255,0.7)" }}>
+                  {t('support.f50AuxDescription')}
+                </p>
+                <p style={{ margin: "0.9rem 0 0", maxWidth: "640px", fontSize: "0.85rem", lineHeight: 1.55, color: "rgba(255,255,255,0.5)", fontStyle: "italic" }}>
+                  *{t('support.f50AuxNote')}
+                </p>
+                <p style={{ margin: "0.6rem 0 0", fontSize: "12px", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                  {t('support.f50AuxRequirement')} · .zip
+                </p>
+              </div>
+              <DownloadButton href={`/assets/firmware/${F50_AUX_UPDATE.file}`} label={t('support.download')} />
+            </div>
+
+            {(F50_AUX_UPDATE.videoSrc || F50_AUX_UPDATE.videoYoutubeId) && (
+              <div style={{ marginTop: "clamp(2rem, 4vh, 3rem)" }}>
+                <h3 style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.25rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em", margin: "0 0 clamp(1rem, 2vh, 1.5rem)" }}>
+                  {t('support.f50AuxVideoTitle')}
+                </h3>
+                <TutorialVideo
+                  title={t('support.f50AuxVideoTitle')}
+                  ctaLabel={t('support.updateVideoCta')}
+                  src={F50_AUX_UPDATE.videoSrc}
+                  poster={F50_AUX_UPDATE.videoPoster}
+                  youtubeId={F50_AUX_UPDATE.videoYoutubeId}
+                />
+              </div>
+            )}
+          </div>
+
           <div style={{ display: "flex", flexDirection: "column", gap: "1px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             {FIRMWARES.map((item) => (
               <div
@@ -150,76 +194,12 @@ export default function SupportPage() {
               <h3 style={{ fontSize: "clamp(1.1rem, 1.8vw, 1.4rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em", margin: "0 0 clamp(1rem, 2vh, 1.5rem)" }}>
                 {t('support.updateVideoTitle')}
               </h3>
-
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  maxWidth: "860px",
-                  aspectRatio: "16 / 9",
-                  borderRadius: "8px",
-                  overflow: "hidden",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  background: "#000",
-                }}
-              >
-                {!videoPlaying ? (
-                  <button
-                    type="button"
-                    onClick={() => setVideoPlaying(true)}
-                    aria-label={t('support.updateVideoTitle')}
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "0.75rem",
-                      border: "none",
-                      cursor: "pointer",
-                      background: "linear-gradient(135deg, rgba(232,80,10,0.12), rgba(0,0,0,0.9))",
-                      color: "#fff",
-                    }}
-                  >
-                    <span
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        width: "64px",
-                        height: "64px",
-                        borderRadius: "999px",
-                        background: "#E8500A",
-                      }}
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </span>
-                    <span style={{ fontSize: "0.95rem", fontWeight: 600, letterSpacing: "0.02em" }}>
-                      {t('support.updateVideoCta')}
-                    </span>
-                  </button>
-                ) : F50_UPDATE_VIDEO_SRC ? (
-                  <video
-                    src={F50_UPDATE_VIDEO_SRC}
-                    controls
-                    autoPlay
-                    playsInline
-                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", background: "#000" }}
-                  />
-                ) : (
-                  <iframe
-                    src={`https://www.youtube.com/embed/${F50_UPDATE_VIDEO_YOUTUBE_ID}?autoplay=1`}
-                    title={t('support.updateVideoTitle')}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
-                  />
-                )}
-              </div>
+              <TutorialVideo
+                title={t('support.updateVideoTitle')}
+                ctaLabel={t('support.updateVideoCta')}
+                src={F50_UPDATE_VIDEO_SRC}
+                youtubeId={F50_UPDATE_VIDEO_YOUTUBE_ID}
+              />
             </div>
           )}
         </div>
@@ -344,5 +324,83 @@ function DownloadButton({ href, label }: { href: string; label: string }) {
       </svg>
       {label}
     </a>
+  );
+}
+
+function TutorialVideo({ title, ctaLabel, src, poster, youtubeId }: { title: string; ctaLabel: string; src?: string; poster?: string; youtubeId?: string }) {
+  const [playing, setPlaying] = useState(false);
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        maxWidth: "860px",
+        aspectRatio: "16 / 9",
+        borderRadius: "8px",
+        overflow: "hidden",
+        border: "1px solid rgba(255,255,255,0.08)",
+        background: "#000",
+      }}
+    >
+      {!playing ? (
+        <button
+          type="button"
+          onClick={() => setPlaying(true)}
+          aria-label={title}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "0.75rem",
+            border: "none",
+            cursor: "pointer",
+            background: poster
+              ? `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url(${poster}) center / cover no-repeat`
+              : "linear-gradient(135deg, rgba(232,80,10,0.12), rgba(0,0,0,0.9))",
+            color: "#fff",
+          }}
+        >
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "64px",
+              height: "64px",
+              borderRadius: "999px",
+              background: "#E8500A",
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+          <span style={{ fontSize: "0.95rem", fontWeight: 600, letterSpacing: "0.02em" }}>
+            {ctaLabel}
+          </span>
+        </button>
+      ) : src ? (
+        <video
+          src={src}
+          controls
+          autoPlay
+          playsInline
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", background: "#000" }}
+        />
+      ) : (
+        <iframe
+          src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none" }}
+        />
+      )}
+    </div>
   );
 }
