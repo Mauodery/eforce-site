@@ -22,6 +22,15 @@ const firmwaresData = [
 /* Tutorial de atualiza\u00e7\u00e3o do m\u00f3dulo, o mesmo v\u00eddeo da p\u00e1gina de suporte. */
 const UPDATE_VIDEO_YOUTUBE_ID = "HCiaGpVNfi8";
 
+/* Atualiza\u00e7\u00e3o do controle de volume AUX do m\u00f3dulo F50, com o tutorial pr\u00f3prio (mesmos arquivos da p\u00e1gina de suporte). */
+const F50_AUX_UPDATE = {
+  file: "F50_Volume_Control_AUX_20261006.zip",
+  videoSrc: "/assets/video/f50-volume-aux-tutorial.mp4",
+  videoPoster: "/assets/video/f50-volume-aux-tutorial-poster.jpg",
+};
+
+type SidebarVideo = { title: string; youtubeId?: string; src?: string; poster?: string };
+
 function getManualHref(slug: string, lang: string | undefined) {
   const suffix = lang === "pt" ? "" : "-en";
   return `/assets/manuais/manual-${slug}${suffix}.pdf`;
@@ -30,17 +39,39 @@ function getManualHref(slug: string, lang: string | undefined) {
 export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
   const { t } = useTranslation();
   const { lang } = useParams();
-  const [videoOpen, setVideoOpen] = useState(false);
+  const [video, setVideo] = useState<SidebarVideo | null>(null);
 
   useEffect(() => {
-    if (!videoOpen) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setVideoOpen(false); };
+    if (!video) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setVideo(null); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [videoOpen]);
+  }, [video]);
 
   return (
     <div className="flex flex-col gap-10">
+      {/* Garantia */}
+      <div>
+        <h3 className="text-gray-900 font-bold text-xl mb-4">{t('support.warrantyLabel')}</h3>
+        <a
+          href="/assets/manuais/garantia_eforce.pdf"
+          download
+          className="flex items-center gap-3 group"
+        >
+          <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded shrink-0">
+            <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-orange transition-colors">{t('support.warrantyTitle')}</p>
+            <p className="text-xs text-gray-400">{t('support.warrantyPdfLabel')}</p>
+          </div>
+          <svg className="w-4 h-4 text-gray-400 group-hover:text-brand-orange transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+          </svg>
+        </a>
+      </div>
 
       {/* Manuais */}
       <div>
@@ -92,6 +123,9 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
             {t('support.updatesLabel')}
           </h3>
         </Link>
+        <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
+          {t('support.latestFirmwareHeading')}
+        </p>
         <div className="flex flex-col gap-3">
           {firmwaresData.map((item) => (
             <a
@@ -122,7 +156,7 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
         {/* Tutorial em v\u00eddeo, abre num pop-up */}
         <button
           type="button"
-          onClick={() => setVideoOpen(true)}
+          onClick={() => setVideo({ title: t('support.updateVideoLink'), youtubeId: UPDATE_VIDEO_YOUTUBE_ID })}
           className="mt-4 flex items-center gap-2 text-left text-sm font-semibold text-brand-orange hover:underline"
         >
           <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -130,14 +164,50 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
           </svg>
           {t('support.updateVideoLink')}
         </button>
+
+        {/* F50 \u2014 controle de volume AUX */}
+        <p className="mt-8 text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
+          {t('support.f50AuxSidebarHeading')}
+        </p>
+        <a
+          href={`/assets/firmware/${F50_AUX_UPDATE.file}`}
+          download
+          className="flex items-center gap-3 group"
+        >
+          <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded shrink-0">
+            <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
+            </svg>
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-orange transition-colors">
+              {t('support.f50AuxSidebarName')}
+            </p>
+            <p className="text-xs text-gray-400">{t('support.f50AuxSidebarLabel')}</p>
+          </div>
+          <svg className="w-4 h-4 text-gray-400 group-hover:text-brand-orange transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
+          </svg>
+        </a>
+
+        <button
+          type="button"
+          onClick={() => setVideo({ title: t('support.f50AuxVideoTitle'), src: F50_AUX_UPDATE.videoSrc, poster: F50_AUX_UPDATE.videoPoster })}
+          className="mt-4 flex items-center gap-2 text-left text-sm font-semibold text-brand-orange hover:underline"
+        >
+          <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM10 8.2l6 3.8-6 3.8V8.2z" />
+          </svg>
+          {t('support.f50AuxVideoTitle')}
+        </button>
       </div>
 
-      {videoOpen && (
+      {video && (
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={t('support.updateVideoLink')}
-          onClick={() => setVideoOpen(false)}
+          aria-label={video.title}
+          onClick={() => setVideo(null)}
           style={{
             position: "fixed", inset: 0, zIndex: 120,
             background: "rgba(0,0,0,0.85)",
@@ -147,7 +217,7 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
         >
           <button
             type="button"
-            onClick={() => setVideoOpen(false)}
+            onClick={() => setVideo(null)}
             aria-label="Fechar"
             style={{
               position: "absolute", top: "1rem", right: "1.25rem",
@@ -162,40 +232,29 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
             style={{ width: "100%", maxWidth: "960px" }}
           >
             <div style={{ position: "relative", paddingBottom: "56.25%", height: 0, overflow: "hidden", borderRadius: "8px" }}>
-              <iframe
-                src={`https://www.youtube.com/embed/${UPDATE_VIDEO_YOUTUBE_ID}?autoplay=1`}
-                title={t('support.updateVideoLink')}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
-              />
+              {video.src ? (
+                <video
+                  src={video.src}
+                  poster={video.poster}
+                  controls
+                  autoPlay
+                  playsInline
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "contain", background: "#000" }}
+                />
+              ) : (
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: "none" }}
+                />
+              )}
             </div>
           </div>
         </div>
       )}
 
-      {/* Garantia */}
-      <div>
-        <h3 className="text-gray-900 font-bold text-xl mb-4">{t('support.warrantyLabel')}</h3>
-        <a
-          href="/assets/manuais/garantia_eforce.pdf"
-          download
-          className="flex items-center gap-3 group"
-        >
-          <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded shrink-0">
-            <svg className="w-6 h-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-            </svg>
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-orange transition-colors">{t('support.warrantyTitle')}</p>
-            <p className="text-xs text-gray-400">{t('support.warrantyPdfLabel')}</p>
-          </div>
-          <svg className="w-4 h-4 text-gray-400 group-hover:text-brand-orange transition-colors shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16" />
-          </svg>
-        </a>
-      </div>
 
       {/* Contato */}
       <div>
