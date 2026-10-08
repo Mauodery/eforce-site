@@ -120,42 +120,6 @@ export default function SupportPage() {
             {t('support.updatesHeadline')}
           </h2>
 
-          {/* F50 — controle de volume AUX */}
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "clamp(1.5rem, 4vh, 2.5rem) 0", marginBottom: "clamp(2.5rem, 5vh, 4rem)" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: "clamp(1.25rem, 3vw, 3rem)" }}>
-              <div style={{ flex: "1 1 320px", minWidth: 0 }}>
-                <p style={{ margin: 0, fontSize: "clamp(1rem, 1.5vw, 1.25rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>
-                  {t('support.f50AuxTitle')}
-                </p>
-                <p style={{ margin: "0.6rem 0 0", maxWidth: "640px", fontSize: "0.95rem", lineHeight: 1.6, color: "rgba(255,255,255,0.7)" }}>
-                  {t('support.f50AuxDescription')}
-                </p>
-                <p style={{ margin: "0.9rem 0 0", maxWidth: "640px", fontSize: "0.85rem", lineHeight: 1.55, color: "rgba(255,255,255,0.5)", fontStyle: "italic" }}>
-                  *{t('support.f50AuxNote')}
-                </p>
-                <p style={{ margin: "0.6rem 0 0", fontSize: "12px", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-                  {t('support.f50AuxRequirement')} · .zip
-                </p>
-              </div>
-              <DownloadButton href={`/assets/firmware/${F50_AUX_UPDATE.file}`} label={t('support.download')} />
-            </div>
-
-            {(F50_AUX_UPDATE.videoSrc || F50_AUX_UPDATE.videoYoutubeId) && (
-              <div style={{ marginTop: "clamp(2rem, 4vh, 3rem)" }}>
-                <h3 style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.25rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em", margin: "0 0 clamp(1rem, 2vh, 1.5rem)" }}>
-                  {t('support.f50AuxVideoTitle')}
-                </h3>
-                <TutorialVideo
-                  title={t('support.f50AuxVideoTitle')}
-                  ctaLabel={t('support.updateVideoCta')}
-                  src={F50_AUX_UPDATE.videoSrc}
-                  poster={F50_AUX_UPDATE.videoPoster}
-                  youtubeId={F50_AUX_UPDATE.videoYoutubeId}
-                />
-              </div>
-            )}
-          </div>
-
           <div style={{ display: "flex", flexDirection: "column", gap: "1px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             {FIRMWARES.map((item) => (
               <div
@@ -202,6 +166,42 @@ export default function SupportPage() {
               />
             </div>
           )}
+
+          {/* F50 — controle de volume AUX */}
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.06)", padding: "clamp(1.5rem, 4vh, 2.5rem) 0", marginTop: "clamp(2.5rem, 5vh, 4rem)" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", gap: "clamp(1.25rem, 3vw, 3rem)" }}>
+              <div style={{ flex: "1 1 320px", minWidth: 0 }}>
+                <p style={{ margin: 0, fontSize: "clamp(1rem, 1.5vw, 1.25rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em" }}>
+                  {t('support.f50AuxTitle')}
+                </p>
+                <p style={{ margin: "0.6rem 0 0", maxWidth: "640px", fontSize: "0.95rem", lineHeight: 1.6, color: "rgba(255,255,255,0.7)" }}>
+                  {t('support.f50AuxDescription')}
+                </p>
+                <p style={{ margin: "0.9rem 0 0", maxWidth: "640px", fontSize: "0.85rem", lineHeight: 1.55, color: "rgba(255,255,255,0.5)", fontStyle: "italic" }}>
+                  *{t('support.f50AuxNote')}
+                </p>
+                <p style={{ margin: "0.6rem 0 0", fontSize: "12px", color: "rgba(255,255,255,0.35)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+                  {t('support.f50AuxRequirement')} · .zip
+                </p>
+              </div>
+              <DownloadButton href={`/assets/firmware/${F50_AUX_UPDATE.file}`} label={t('support.download')} />
+            </div>
+
+            {(F50_AUX_UPDATE.videoSrc || F50_AUX_UPDATE.videoYoutubeId) && (
+              <div style={{ marginTop: "clamp(2rem, 4vh, 3rem)" }}>
+                <h3 style={{ fontSize: "clamp(1.05rem, 1.6vw, 1.25rem)", fontWeight: 700, color: "#fff", letterSpacing: "-0.02em", margin: "0 0 clamp(1rem, 2vh, 1.5rem)" }}>
+                  {t('support.f50AuxVideoTitle')}
+                </h3>
+                <TutorialVideo
+                  title={t('support.f50AuxVideoTitle')}
+                  ctaLabel={t('support.updateVideoCta')}
+                  src={F50_AUX_UPDATE.videoSrc}
+                  poster={F50_AUX_UPDATE.videoPoster}
+                  youtubeId={F50_AUX_UPDATE.videoYoutubeId}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
