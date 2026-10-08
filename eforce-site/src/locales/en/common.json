@@ -278,6 +278,8 @@
     "f50AuxNote": "This update is additional. Previous updates must be installed first.",
     "f50AuxRequirement": "Microsoft PC required",
     "f50AuxVideoTitle": "Watch the tutorial on how to install this file.",
+    "f50AuxSidebarName": "F50 Module",
+    "f50AuxSidebarLabel": "AUX volume control — .zip",
     "firmwareLabel": "Add Bank — .bin",
     "updateVideoTitle": "See here how to update the F50 module",
     "updateVideoCta": "Watch",

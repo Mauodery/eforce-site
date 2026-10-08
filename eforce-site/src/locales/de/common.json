@@ -278,6 +278,8 @@
     "f50AuxNote": "Dieses Update ist ergänzend. Die vorherigen Updates müssen zuerst installiert werden.",
     "f50AuxRequirement": "Windows-PC erforderlich",
     "f50AuxVideoTitle": "Sehen Sie sich das Tutorial zur Installation dieser Datei an.",
+    "f50AuxSidebarName": "F50-Modul",
+    "f50AuxSidebarLabel": "AUX-Lautstärkeregelung — .zip",
     "firmwareLabel": "Add Bank — .bin",
     "updateVideoTitle": "So aktualisieren Sie das F50-Modul",
     "updateVideoCta": "Ansehen",
