@@ -90,4 +90,4 @@ Rotas: `/:lang/`, `/:lang/kits/:slug`, `/:lang/story`, `/:lang/technology`, `/:l
 
 - Repositório é público — decidir se vira privado (Vercel continua funcionando).
 - Conta/assento do Mauricio na Vercel (time `odery`) ainda não confirmado.
-- PR #17 do Nicolas (fix/suporte-videos-f50) aberto em 08/10, aguardando merge.
+- Nenhum PR do Nicolas pendente em 08/10 (o #17, tutorial do F50 no suporte, já entrou na main).
