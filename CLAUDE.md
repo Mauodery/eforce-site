@@ -5,8 +5,10 @@
 
 Código do site **eforcedrums.com** (E-Force, baterias eletrônicas da Odery Drums Brazil).
 Projeto conduzido por **Mauricio Odery + Claude** a partir de 08/10/2026. O site foi
-construído pelo Nicolas Cunha (filho do Mauricio) com Claude entre mar e out/2026; a partir
-de agora toda atualização sai daqui, sem depender dele.
+construído pelo Nicolas Cunha (filho do Mauricio) com Claude entre mar e out/2026. As
+atualizações do dia a dia saem daqui; o **Nicolas continua com acesso** ao repositório e à
+Vercel, e o Mauricio pode acioná-lo quando precisar. Antes de mexer, conferir se há PR ou
+branch dele em andamento para não trabalhar em cima da mesma coisa.
 
 ## Onde fica cada coisa
 
@@ -88,4 +90,4 @@ Rotas: `/:lang/`, `/:lang/kits/:slug`, `/:lang/story`, `/:lang/technology`, `/:l
 
 - Repositório é público — decidir se vira privado (Vercel continua funcionando).
 - Conta/assento do Mauricio na Vercel (time `odery`) ainda não confirmado.
-- Nicolas ainda tem acesso e abre PRs; combinar com ele o fim da frente.
+- PR #17 do Nicolas (fix/suporte-videos-f50) aberto em 08/10, aguardando merge.
