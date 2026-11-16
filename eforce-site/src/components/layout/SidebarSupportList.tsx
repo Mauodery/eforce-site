@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { manualHref, garantiaHref } from "@/lib/manuais";
 
 interface SidebarSupportListProps {
   onNavigate: () => void;
@@ -31,10 +32,6 @@ const F50_AUX_UPDATE = {
 
 type SidebarVideo = { title: string; youtubeId?: string; src?: string; poster?: string };
 
-function getManualHref(slug: string, lang: string | undefined) {
-  const suffix = lang === "pt" ? "" : "-en";
-  return `/assets/manuais/manual-${slug}${suffix}.pdf`;
-}
 
 export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
   const { t } = useTranslation();
@@ -54,7 +51,7 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
       <div>
         <h3 className="text-gray-900 font-bold text-xl mb-4">{t('support.warrantyLabel')}</h3>
         <a
-          href="/assets/manuais/garantia_eforce.pdf"
+          href={garantiaHref(lang)}
           download
           className="flex items-center gap-3 group"
         >
@@ -88,7 +85,7 @@ export function SidebarSupportList({ onNavigate }: SidebarSupportListProps) {
           {manuaisData.map((item) => (
             <a
               key={item.name}
-              href={getManualHref(item.slug, lang)}
+              href={manualHref(item.slug, lang)}
               download
               className="flex items-center gap-3 group"
             >

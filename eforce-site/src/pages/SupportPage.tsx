@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SEO from '@/components/layout/SEO';
+import { manualHref, garantiaHref } from '@/lib/manuais';
 
 const FIRMWARES = [
   {
@@ -70,8 +71,7 @@ export default function SupportPage() {
               { name: "EF2 V4", img: "/assets/images/kits/ef2v4-manual.webp", slug: "ef2v4" },
               { name: "EF5 V2", img: "/assets/images/kits/ef5v2-manual.webp", slug: "ef5v2" },
             ].map((item) => {
-              const suffix = currentLang === "pt" ? "" : "-en";
-              const href = `/assets/manuais/manual-${item.slug}${suffix}.pdf`;
+              const href = manualHref(item.slug, currentLang);
               return (
               <div
                 key={item.name}
@@ -241,7 +241,7 @@ export default function SupportPage() {
                   {t('support.warrantyPdfLabel')}
                 </p>
               </div>
-              <DownloadButton href="/assets/manuais/garantia_eforce.pdf" label={t('support.download')} />
+              <DownloadButton href={garantiaHref(currentLang)} label={t('support.download')} />
             </div>
           </div>
         </div>
